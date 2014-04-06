@@ -1,0 +1,104 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+
+`core-toolbar` is a horizontal bar containing elements that can be used for
+label, navigation, search and actions.
+
+    <core-toolbar>
+      <paper-icon-button src="menu.png" on-tap="{{menuAction}}"></paper-icon-button>
+      <div core-flex>Title</div>
+      <paper-icon-button src="more.png" on-tap="{{moreAction}}"></paper-icon-button>
+    </core-toolbar>
+
+`core-toolbar` has a standard height, but can be taller by setting `tall`
+class on the `core-toolbar`.
+
+    <core-toolbar class="tall">
+      <paper-icon-button icon="menu"></paper-icon-button>
+    </core-toolbar>
+
+When taller, actions can pin to either the top (default) or the bottom.
+
+    <core-toolbar class="tall">
+      <paper-icon-button class="bottom" icon="menu"></paper-icon-button>
+    </core-toolbar>
+
+Apply `seamed` class to remove the drop shadow.
+
+    <core-toolbar class="seamed">
+      <paper-icon-button icon="menu"></paper-icon-button>
+    </core-toolbar>
+
+`core-toolbar` can adapt to screen size.  If the attribute 
+`responsive` is set and the screen size is less than `responsiveWidth` 
+(default to 800px), the toolbar moves to the bottom of the page.
+
+    <core-toolbar>
+      <paper-icon-button icon="menu"></paper-icon-button>
+      <div core-flex>Title</div>
+      <core-toolbar responsive>
+        <paper-icon-button icon="refresh"></paper-icon-button>
+        <paper-icon-button icon="search"></paper-icon-button>
+      </core-toolbar>
+    </core-toolbar>
+
+@group Polymer Core Elements
+@element core-toolbar
+@homepage github.io
+-->
+
+<link rel="import" href="../core-theme-aware/core-theme-aware.html">
+<link rel="import" href="../core-media-query/core-media-query.html">
+
+<polymer-element name="core-toolbar" extends="core-theme-aware" attributes="responsiveWidth">
+
+  <template>
+
+    <link rel="stylesheet" href="core-toolbar.css">
+    <link rel="stylesheet" href="../core-layout/core-layout.css">
+
+    <core-media-query query="max-width: {{responsiveWidth}}" queryMatches="{{queryMatches}}"></core-media-query>
+
+    <div bottom-tools core-flow core-align="center">
+      <content select=".bottom"></content>
+    </div>
+
+    <div tools core-flow core-align="center">
+      <content></content>
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer('core-toolbar', {
+
+      /**
+       * Minimum width until element becomes responsive.
+       *
+       * @attribute responsiveWidth
+       * @type string
+       * @default '800px'
+       */
+      responsiveWidth: '800px',
+      
+      queryMatches: false,
+      defaultTheme: 'core-light-theme',
+
+      queryMatchesChanged: function() {
+        this.classList.toggle('narrow-layout', this.queryMatches);
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
