@@ -3,7 +3,6 @@
   "private": true,
   "dependencies": {
     "core-theme-aware": "Polymer/core-theme-aware#master",
-    "core-media-query": "Polymer/core-media-query#master",
     "core-layout": "Polymer/core-layout#master"
   }
 }

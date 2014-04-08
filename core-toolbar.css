@@ -17,15 +17,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   height: 60px;
   /* typography */
   font-size: 21px;
-  color: #333;
   /* border/shadow */
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.35);
   /* transition */
   transition: height ease-in 0.18s;
-}
-
-:host(.core-dark-theme) {
-  color: #eee;
 }
 
 :host(.tall) {
@@ -36,41 +31,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   box-shadow: none;
 }
 
-:host(.narrow-layout[responsive]:host) {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.28);
+.toolbar-tools {
+  height: 100%;
+  padding: 11px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
-:host([responsive]:host) {
-  margin: 0 !important;
-  height: 60px;
-  box-shadow: none;
-}
-
-[tools] {
-  height: 60px;
-}
-
-[bottom-tools] {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 60px;
-  pointer-events: none;
-}
-
-/*@polyfill :host > .bottom-tools > * */
-::content[select=".bottom"] > * {
-  pointer-events: visible;
-}
-
-/*@polyfill :host > [tools] > *, :host > .bottom-tools > * */
+/*@polyfill .toolbar-tools > * */
 ::content > * {
-  margin: 0px 8px 0 8px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  height: 38px;
+  margin: 0px 8px;
 }
+
+/*@polyfill .toolbar-tools > .bottom */
+::content > .bottom {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+/*@polyfill .toolbar-tools > .middle */
+::content > .middle {
+  -webkit-align-self: auto;
+  align-self: auto;
+}
+
