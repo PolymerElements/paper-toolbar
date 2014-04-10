@@ -40,14 +40,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 /*@polyfill .toolbar-tools > * */
 ::content > * {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
   -webkit-align-self: flex-start;
   align-self: flex-start;
   height: 38px;
   margin: 0px 8px;
+}
+
+/* center aligned elements in div/span, usually for label */
+/*@polyfill .toolbar-tools > div, .toolbar-tools > span */
+::content > div, ::content > span {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 /*@polyfill .toolbar-tools > .bottom */
