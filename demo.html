@@ -72,12 +72,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   
   <br>
   
-  <core-toolbar class="tall">
+  <core-toolbar class="medium-tall">
     <core-icon-button icon="menu"></core-icon-button>
-    <div core-flex class="middle">Toolbar: label aligns to the middle</div>
+    <span core-flex></span>
     <core-icon-button icon="refresh"></core-icon-button>
     <core-icon-button icon="add"></core-icon-button>
+    <span class="bottom indent">Toolbar: medium tall with label aligns to the bottom</span>
   </core-toolbar>
+
+  <br>
+  
+  <core-toolbar class="tall">
+    <core-icon-button icon="menu"></core-icon-button>
+    <div core-flex></div>
+    <core-icon-button icon="refresh"></core-icon-button>
+    <core-icon-button icon="add"></core-icon-button>
+    <div core-flex class="middle indent">Toolbar: label aligns to the middle</div>
+    <div core-flex class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>
+  </core-toolbar>
+  
+  <br>
 
 </body>
 </html>

@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   /* size */
-  height: 60px;
+  height: 64px;
   /* typography */
   font-size: 21px;
   /* border/shadow */
@@ -23,47 +23,54 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   transition: height ease-in 0.18s;
 }
 
+:host(.core-dark-theme) {
+  color: #eee;
+}
+
+:host(.medium-tall) {
+  height: 128px;
+}
+
 :host(.tall) {
-  height: 188px;
+  height: 192px;
 }
 
 :host(.seamed) {
   box-shadow: none;
 }
 
-.toolbar-tools {
-  height: 100%;
-  padding: 11px 0;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.toolbar-tools, .toolbar-tools-middle, .toolbar-tools-bottom {
+  height: 64px;
+  padding: 0 9px;
 }
 
-/*@polyfill .toolbar-tools > * */
+.toolbar-tools-middle {
+  position: absolute;
+  top: calc(50% - 30px);
+  right: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.toolbar-tools-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/*@polyfill :host > .toolbar-tools-middle > *, :host > .toolbar-tools-bottom > * */
+::content[select=".middle"] > *, ::content[select=".bottom"] > * {
+  pointer-events: visible;
+}
+
+/*@polyfill :host > .toolbar-tools > *, :host > .toolbar-tools-middle > *, :host > .toolbar-tools-bottom > * */
 ::content > * {
-  -webkit-align-self: flex-start;
-  align-self: flex-start;
-  height: 38px;
-  margin: 0px 8px;
+  margin: 0px 8px 0 8px;
 }
 
-/* center aligned elements in div/span, usually for label */
-/*@polyfill .toolbar-tools > div, .toolbar-tools > span */
-::content > div, ::content > span {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
+/*@polyfill :host .indent */
+::content > .indent {
+  margin-left: 60px;
 }
-
-/*@polyfill .toolbar-tools > .bottom */
-::content > .bottom {
-  -webkit-align-self: flex-end;
-  align-self: flex-end;
-}
-
-/*@polyfill .toolbar-tools > .middle */
-::content > .middle {
-  -webkit-align-self: auto;
-  align-self: auto;
-}
-
