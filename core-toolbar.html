@@ -8,7 +8,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-
 `core-toolbar` is a horizontal bar containing elements that can be used for
 label, navigation, search and actions.
 
@@ -46,26 +45,23 @@ Apply `seamed` class to remove the drop shadow.
 <link rel="import" href="../core-theme-aware/core-theme-aware.html">
 
 <polymer-element name="core-toolbar" extends="core-theme-aware">
+<template>
 
-  <template>
+  <link rel="stylesheet" href="core-toolbar.css">
+  <link rel="stylesheet" href="../core-layout/core-layout.css">
 
-    <link rel="stylesheet" href="core-toolbar.css">
-    <link rel="stylesheet" href="../core-layout/core-layout.css">
+  <div class="toolbar-tools" core-flow core-align="center">
+    <content></content>
+  </div>
 
-    <div class="toolbar-tools" core-flow core-align="center">
-      <content></content>
-    </div>
+</template>
+<script>
 
-  </template>
+  Polymer('core-toolbar', {
 
-  <script>
+    defaultTheme: 'core-light-theme'
 
-    Polymer('core-toolbar', {
+  });
 
-      defaultTheme: 'core-light-theme'
-
-    });
-
-  </script>
-
+</script>
 </polymer-element>
