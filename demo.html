@@ -15,7 +15,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../platform/platform.js"></script>
 
   <link rel="import" href="core-toolbar.html">
-  <link rel="import" href="../core-icon-button/core-icon-button.html">
 
   <style>
 
@@ -30,6 +29,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     core-toolbar.core-dark-theme {
       background-color: #7D25AC;
     }
+    
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      background-image: url(http://www.polymer-project.org/images/picons/ic_menu_light_.png);
+      background-size: 48px;
+      background-position: 50% 50%;
+    }
 
   </style>
 
@@ -37,56 +44,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <body unresolved>
 
   <core-toolbar>
-    <core-icon-button icon="menu"></core-icon-button>
+    <div class="menu-icon"></div>
     <span core-flex>Toolbar: light-theme (default)</span>
-    <core-icon-button icon="refresh"></core-icon-button>
-    <core-icon-button icon="add"></core-icon-button>
   </core-toolbar>
 
   <br>
 
   <core-toolbar theme="core-dark-theme">
-    <core-icon-button icon="menu"></core-icon-button>
+    <div class="menu-icon"></div>
     <span core-flex>Toolbar: dark-theme</span>
-    <core-icon-button icon="refresh"></core-icon-button>
-    <core-icon-button icon="add"></core-icon-button>
   </core-toolbar>
 
   <br>
 
   <core-toolbar class="tall">
-    <core-icon-button icon="menu"></core-icon-button>
+    <div class="menu-icon"></div>
     <span core-flex>Toolbar: tall</span>
-    <core-icon-button icon="refresh"></core-icon-button>
-    <core-icon-button icon="add"></core-icon-button>
   </core-toolbar>
 
   <br>
 
   <core-toolbar class="tall">
-    <core-icon-button icon="menu" class="bottom"></core-icon-button>
-    <span core-flex class="bottom">Toolbar: tall with actions pin to the bottom</span>
-    <core-icon-button icon="refresh" class="bottom"></core-icon-button>
-    <core-icon-button icon="add" class="bottom"></core-icon-button>
+    <div class="menu-icon"></div>
+    <span core-flex class="bottom indent">Toolbar: tall with actions pin to the bottom</span>
   </core-toolbar>
   
   <br>
   
   <core-toolbar class="medium-tall">
-    <core-icon-button icon="menu"></core-icon-button>
+    <div class="menu-icon"></div>
     <span core-flex></span>
-    <core-icon-button icon="refresh"></core-icon-button>
-    <core-icon-button icon="add"></core-icon-button>
     <span class="bottom indent">Toolbar: medium tall with label aligns to the bottom</span>
   </core-toolbar>
 
   <br>
   
   <core-toolbar class="tall">
-    <core-icon-button icon="menu"></core-icon-button>
+    <div class="menu-icon"></div>
     <div core-flex></div>
-    <core-icon-button icon="refresh"></core-icon-button>
-    <core-icon-button icon="add"></core-icon-button>
     <div core-flex class="middle indent">Toolbar: label aligns to the middle</div>
     <div core-flex class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>
   </core-toolbar>
