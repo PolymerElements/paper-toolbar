@@ -61,7 +61,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 /*@polyfill :host > .toolbar-tools > *, :host > .toolbar-tools-middle > *, :host > .toolbar-tools-bottom > * */
 ::content > * {
-  margin: 0px 8px 0 8px;
+  margin: 0px 8px;
+}
+
+/*@polyfill :host .core-fit, :host [core-fit] */
+::content > .core-fit, ::content > [core-fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
 }
 
 /*@polyfill :host .indent */
