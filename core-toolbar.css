@@ -16,9 +16,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   /* size */
   height: 64px;
   /* typography */
-  font-size: 21px;
+  font-size: 1.3em;
   /* transition */
-  transition: height ease-in 0.18s;
+  transition: height 0.18s ease-in;
 }
 
 :host(.core-dark-theme) {
@@ -33,19 +33,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   height: 192px;
 }
 
-.toolbar-tools, .toolbar-tools-middle, .toolbar-tools-bottom {
+.toolbar-tools {
   height: 64px;
   padding: 0 9px;
 }
 
+/* narrow layout */
+:host(.narrow) {
+  height: 56px;
+}
+
+:host(.narrow.medium-tall) {
+  height: 112px;
+}
+
+:host(.narrow.tall) {
+  height: 168px;
+}
+
+:host(.narrow) .toolbar-tools {
+  height: 56px;
+  padding: 0 1px;
+}
+
+/* middle tools */
 .toolbar-tools-middle {
   position: absolute;
-  top: calc(50% - 30px);
+  top: calc(100% / 3);
   right: 0;
   left: 0;
   pointer-events: none;
 }
 
+/* bottom tools */
 .toolbar-tools-bottom {
   position: absolute;
   right: 0;
@@ -54,12 +74,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   pointer-events: none;
 }
 
+/* shows bottom tools only when in normal height (!tall && !medium-tall) */
+:host(.no-overlap) > .toolbar-tools-top, 
+:host(.no-overlap) > .toolbar-tools-middle {
+  transition: -webkit-transform 0.18s ease-in;
+  transition: transform 0.18s ease-in;
+}
+
+:host(.no-overlap:not(.medium-tall):not(.tall)) > .toolbar-tools-top {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+:host(.no-overlap:not(.medium-tall):not(.tall)) > .toolbar-tools-middle {
+  -webkit-transform: translateY(-200%);
+  transform: translateY(-200%);
+}
+
 /*@polyfill :host > .toolbar-tools-middle > *, :host > .toolbar-tools-bottom > * */
 ::content[select=".middle"] > *, ::content[select=".bottom"] > * {
   pointer-events: visible;
 }
 
-/*@polyfill :host > .toolbar-tools > *, :host > .toolbar-tools-middle > *, :host > .toolbar-tools-bottom > * */
+/*@polyfill :host > .toolbar-tools > * */
 ::content > * {
   margin: 0px 8px;
 }
