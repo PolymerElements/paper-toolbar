@@ -15,7 +15,7 @@ label, navigation, search and actions. It extends [core-theme-aware](../core-the
 
     <core-toolbar>
       <core-icon-button icon="menu" on-tap="{{menuAction}}"></core-icon-button>
-      <div core-flex>Title</div>
+      <div flex>Title</div>
       <core-icon-button icon="more" on-tap="{{moreAction}}"></core-icon-button>
     </core-toolbar>
 
@@ -45,34 +45,24 @@ When taller, actions can pin to either the top (default), middle or bottom.
 @homepage github.io
 -->
 
-<link rel="import" href="../core-theme-aware/core-theme-aware.html">
+<link rel="import" href="../polymer/polymer.html">
 
-<polymer-element name="core-toolbar" extends="core-theme-aware">
+<polymer-element name="core-toolbar" noscript>
 <template>
 
   <link rel="stylesheet" href="core-toolbar.css">
-  <link rel="stylesheet" href="../core-layout/core-layout.css">
 
-  <div class="toolbar-tools toolbar-tools-bottom core-h core-align-center">
+  <div id="bottomBar" class="toolbar-tools" center horizontal layout>
     <content select=".bottom"></content>
   </div>
   
-  <div class="toolbar-tools toolbar-tools-middle core-h core-align-center">
+  <div id="middleBar" class="toolbar-tools" center horizontal layout>
     <content select=".middle"></content>
   </div>
 
-  <div class="toolbar-tools toolbar-tools-top core-h core-align-center">
+  <div id="topBar" class="toolbar-tools" center horizontal layout>
     <content></content>
   </div>
 
 </template>
-<script>
-
-  Polymer('core-toolbar', {
-
-    defaultTheme: 'core-light-theme'
-
-  });
-
-</script>
 </polymer-element>
