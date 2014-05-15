@@ -26,9 +26,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       background-color: #CFA0E9;
     }
 
-    core-toolbar[theme=core-dark-theme] {
+    core-toolbar.dark-theme {
       background-color: #7D25AC;
-      color: #fff;
+      color: #f1f1f1;
+      fill: #f1f1f1;
     }
     
   </style>
@@ -38,14 +39,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <core-toolbar>
     <core-icon-button icon="menu"></core-icon-button>
-    <span flex>Toolbar: light-theme (default)</span>
+    <span flex>Toolbar</span>
     <core-icon-button icon="refresh"></core-icon-button>
     <core-icon-button icon="add"></core-icon-button>
   </core-toolbar>
 
   <br>
 
-  <core-toolbar theme="core-dark-theme">
+  <core-toolbar class="dark-theme">
     <core-icon-button icon="menu"></core-icon-button>
     <span flex>Toolbar: dark-theme</span>
     <core-icon-button icon="refresh"></core-icon-button>
