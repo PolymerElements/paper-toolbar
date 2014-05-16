@@ -87,17 +87,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   transform: translateY(-200%);
 }
 
-/*@polyfill :host > #middleBar > *, :host > #bottomBar > * */
+polyfill-next-selector { content: ':host > #middleBar > *, :host > #bottomBar > *'; }
 ::content[select=".middle"] > *, ::content[select=".bottom"] > * {
   pointer-events: visible;
 }
 
-/*@polyfill :host > .toolbar-tools > * */
+polyfill-next-selector { content: ':host > .toolbar-tools > *'; }
 ::content > * {
   margin: 0px 8px;
 }
 
-/*@polyfill :host .core-fit, :host [core-fit] */
+polyfill-next-selector { content: ':host .core-fit, :host [core-fit]'; }
 ::content > .core-fit, ::content > [core-fit] {
   position: absolute;
   top: 0;
@@ -107,7 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   margin: 0;
 }
 
-/*@polyfill :host .indent */
+polyfill-next-selector { content: ':host .indent'; }
 ::content > .indent {
   margin-left: 60px;
 }
