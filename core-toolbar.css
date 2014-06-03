@@ -17,8 +17,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   height: 64px;
   /* typography */
   font-size: 1.3em;
-  /* transition */
-  transition: height 0.18s ease-in;
 }
 
 :host(.medium-tall) {
@@ -55,10 +53,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 /* middle bar */
 #middleBar {
   position: absolute;
-  top: calc(100% / 3);
+  top: 64px;
   right: 0;
   left: 0;
   pointer-events: none;
+}
+
+:host(.narrow) #middleBar {
+  top: 56px;
 }
 
 /* bottom bar */
@@ -97,13 +99,14 @@ polyfill-next-selector { content: ':host > .toolbar-tools > *'; }
   margin: 0px 8px;
 }
 
-polyfill-next-selector { content: ':host .core-fit, :host [core-fit]'; }
-::content > .core-fit, ::content > [core-fit] {
+polyfill-next-selector { content: '.toolbar-tools > .fit'; }
+::content > .fit {
   position: absolute;
-  top: 0;
+  top: auto;
   right: 0;
   bottom: 0;
   left: 0;
+  width: auto;
   margin: 0;
 }
 
