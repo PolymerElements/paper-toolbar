@@ -59,13 +59,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 /* middle bar */
 #middleBar {
   position: absolute;
-  top: 64px;
+  top: 0;
   right: 0;
   left: 0;
 }
 
-:host(.narrow) #middleBar {
-  top: 56px;
+:host(.tall, .medium-tall) #middleBar {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
 }
 
 /* bottom bar */
@@ -93,16 +94,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   transform: translateY(-200%);
 }
 
+/* make elements (e.g. buttons) respond to mouse/touch events */
 polyfill-next-selector { content: '.toolbar-tools > *'; }
 ::content > * {
-  pointer-events: visible;
+  pointer-events: auto;
 }
 
+/* elements spacing */
 polyfill-next-selector { content: '.toolbar-tools > *'; }
 ::content > * {
   margin: 0px 8px;
 }
 
+/* misc helpers */
 polyfill-next-selector { content: '.toolbar-tools > .fit'; }
 ::content > .fit {
   position: absolute;
