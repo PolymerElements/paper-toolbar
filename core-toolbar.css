@@ -34,7 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 .toolbar-tools {
   height: 64px;
-  padding: 0 9px;
+  padding: 0 8px;
   pointer-events: none;
 }
 
@@ -53,7 +53,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 :host(.narrow) .toolbar-tools {
   height: 56px;
-  padding: 0 1px;
+  padding: 0;
 }
 
 /* middle bar */
