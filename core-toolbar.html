@@ -8,8 +8,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-`core-toolbar` is a horizontal bar containing elements that can be used for
-label, navigation, search and actions.
+`core-toolbar` is a horizontal bar containing items that can be used for
+label, navigation, search and actions.  The items place inside the 
+`core-toolbar` are projected into a `horizontal center layout` container inside of 
+`core-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
+sizing.
+
+Example:
 
     <core-toolbar>
       <core-icon-button icon="menu" on-tap="{{menuAction}}"></core-icon-button>
@@ -23,15 +28,15 @@ class on the `core-toolbar`.  This will make the toolbar 3x the normal height.
     <core-toolbar class="tall">
       <core-icon-button icon="menu"></core-icon-button>
     </core-toolbar>
-    
-Apply `medium-tall` class to make the toolbar medium tall.  This will make the 
+
+Apply `medium-tall` class to make the toolbar medium tall.  This will make the
 toolbar 2x the normal height.
 
     <core-toolbar class="medium-tall">
       <core-icon-button icon="menu"></core-icon-button>
     </core-toolbar>
 
-When taller, elements can pin to either the top (default), middle or bottom.
+When taller, items can pin to either the top (default), middle or bottom.
 
     <core-toolbar class="tall">
       <core-icon-button icon="menu"></core-icon-button>
@@ -45,7 +50,7 @@ with `bottom`.
     <core-toolbar class="tall">
       <div id="progressBar" class="bottom fit"></div>
     </core-toolbar>
-    
+
 `core-toolbar` adapts to mobile/narrow layout when there is a `core-narrow` class set
 on itself or any of its ancestors.
 
@@ -56,7 +61,7 @@ on itself or any of its ancestors.
 
 <link rel="import" href="../polymer/polymer.html">
 
-<polymer-element name="core-toolbar" noscript>
+<polymer-element name="core-toolbar" attributes="justify middleJustify bottomJustify">
 <template>
 
   <link rel="stylesheet" href="core-toolbar.css">
@@ -64,7 +69,7 @@ on itself or any of its ancestors.
   <div id="bottomBar" class="toolbar-tools" center horizontal layout>
     <content select=".bottom"></content>
   </div>
-  
+
   <div id="middleBar" class="toolbar-tools" center horizontal layout>
     <content select=".middle"></content>
   </div>
@@ -74,4 +79,101 @@ on itself or any of its ancestors.
   </div>
 
 </template>
+<script>
+
+(function() {
+
+  Polymer('core-toolbar', {
+    
+    /**
+     * Controls how the items are aligned horizontally.
+     * Options are `start`, `center`, `end`, `between` and `around`.
+     *
+     * @attribute justify
+     * @type string
+     * @default ''
+     */
+    justify: '',
+    
+    /**
+     * Controls how the items are aligned horizontally when they are placed
+     * in the middle.
+     * Options are `start`, `center`, `end`, `between` and `around`.
+     *
+     * @attribute middleJustify
+     * @type string
+     * @default ''
+     */
+    middleJustify: '',
+    
+    /**
+     * Controls how the items are aligned horizontally when they are placed
+     * at the bottom.
+     * Options are `start`, `center`, `end`, `between` and `around`.
+     *
+     * @attribute bottomJustify
+     * @type string
+     * @default ''
+     */
+    bottomJustify: '',
+    
+    justifyChanged: function(old) {
+      this.updateBarJustify(this.$.topBar, this.justify, old);
+    },
+    
+    middleJustifyChanged: function(old) {
+      this.updateBarJustify(this.$.middleBar, this.justify, old);
+    },
+    
+    bottomJustifyChanged: function(old) {
+      this.updateBarJustify(this.$.bottomBar, this.justify, old);
+    },
+    
+    updateBarJustify: function(bar, justify, old) {
+      if (old) {
+        bar.removeAttribute(this.toLayoutAttrName(old));
+      }
+      if (this.justify) {
+        bar.setAttribute(this.toLayoutAttrName(justify), '');
+      }
+    },
+    
+    toLayoutAttrName: function(value) {
+      return value === 'between' ? 'justified' : value + '-justified';
+    },
+    
+    /**
+     * Returns the height of the toolbar.  This method will not perform any
+     * measurement but instead it will use the default styles to determine
+     * the expected height value.  This is useful if the height
+     * can't be determined via `offsetHeight` at the time, for example, when the
+     * toolbar is set to `display: none` or in a container that is set to
+     * `display: none`.
+     *
+     * @method getHeight
+     */
+    getHeight: function() {
+      var cl = this.classList;
+      var h = this.$.topBar.matches(NARROW_SELECTOR) ||
+          cl.contains('core-narrow') ? NARROW_HEIGHT : NORMAL_HEIGHT;
+      if (cl.contains('tall')) {
+        return h * 3;
+      } else if (cl.contains('medium-tall')) {
+        return h * 2;
+      } else {
+        return h;
+      }
+    }
+
+  });
+
+  var NORMAL_HEIGHT = 64;
+  var NARROW_HEIGHT = 56;
+
+  var NARROW_SELECTOR = window.ShadowDOMPolyfill ?
+      '.core-narrow core-toolbar #topBar' : ':host-context(.core-narrow) #topBar';
+
+})();
+
+</script>
 </polymer-element>
