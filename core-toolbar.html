@@ -36,7 +36,9 @@ toolbar 2x the normal height.
       <core-icon-button icon="menu"></core-icon-button>
     </core-toolbar>
 
-When taller, items can pin to either the top (default), middle or bottom.
+When taller, items can pin to either the top (default), middle or bottom. When
+using `medium-tall`, the middle and bottom divs overlap, but middleJustify and
+bottomJustify attributes are still honored separately.
 
     <core-toolbar class="tall">
       <core-icon-button icon="menu"></core-icon-button>
@@ -122,11 +124,11 @@ on itself or any of its ancestors.
     },
     
     middleJustifyChanged: function(old) {
-      this.updateBarJustify(this.$.middleBar, this.justify, old);
+      this.updateBarJustify(this.$.middleBar, this.middleJustify, old);
     },
     
     bottomJustifyChanged: function(old) {
-      this.updateBarJustify(this.$.bottomBar, this.justify, old);
+      this.updateBarJustify(this.$.bottomBar, this.bottomJustify, old);
     },
     
     updateBarJustify: function(bar, justify, old) {
