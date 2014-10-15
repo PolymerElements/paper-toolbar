@@ -151,10 +151,8 @@ on itself or any of its ancestors.
      * can't be determined via `offsetHeight` at the time, for example, when the
      * toolbar is set to `display: none` or in a container that is set to
      * `display: none`.
-     *
-     * @method getHeight
      */
-    getHeight: function() {
+    /* getHeight: function() {
       var cl = this.classList;
       var h = this.$.topBar.matches(NARROW_SELECTOR) ||
           cl.contains('core-narrow') ? NARROW_HEIGHT : NORMAL_HEIGHT;
@@ -173,7 +171,7 @@ on itself or any of its ancestors.
   var NARROW_HEIGHT = 56;
 
   var NARROW_SELECTOR = window.ShadowDOMPolyfill ?
-      '.core-narrow core-toolbar #topBar' : ':host-context(.core-narrow) #topBar';
+      '.core-narrow core-toolbar #topBar' : ':host-context(.core-narrow) #topBar'; */
 
 })();
 
