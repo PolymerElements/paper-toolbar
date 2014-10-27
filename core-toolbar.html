@@ -36,15 +36,18 @@ toolbar 2x the normal height.
       <core-icon-button icon="menu"></core-icon-button>
     </core-toolbar>
 
-When taller, items can pin to either the top (default), middle or bottom. When
-using `medium-tall`, the middle and bottom divs overlap, but middleJustify and
-bottomJustify attributes are still honored separately.
+When `tall`, items can pin to either the top (default), middle or bottom.  Use
+`middle` class for middle content and `bottom` class for bottom content.
 
     <core-toolbar class="tall">
       <core-icon-button icon="menu"></core-icon-button>
       <div class="middle indent">Middle Title</div>
       <div class="bottom indent">Bottom Title</div>
     </core-toolbar>
+    
+For `medium-tall` toolbar, the middle and bottom contents overlap and are
+pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are 
+still honored separately.
     
 To make an element completely fit at the bottom of the toolbar, use `fit` along
 with `bottom`.
