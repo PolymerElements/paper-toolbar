@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
@@ -7,63 +7,86 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-:host {
+core-toolbar {
   /* technical */
   display: block;
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+
   /* size */
-  height: 64px;
+  min-height: 64px;
+
   /* typography */
   font-size: 1.3em;
+
   /* background */
   background-color: #CFD8DC;
 }
 
-:host(.animate) {
+core-toolbar.animate {
   /* transition */
   transition: height 0.18s ease-in;
 }
 
-:host(.medium-tall) {
+core-toolbar.medium-tall {
   height: 128px;
 }
 
-:host(.tall) {
+core-toolbar.tall {
   height: 192px;
 }
 
-.toolbar-tools {
+core-toolbar .toolbar-tools {
   position: relative;
   height: 64px;
-  padding: 0 8px;
+  padding: 0 16px;
   pointer-events: none;
 }
 
+/* ******************************* */
+/* TODO: Use media queries? `core-narrow` is used in only one other component */
+/* ******************************* */
+
 /* narrow layout */
-:host(.core-narrow),
-:host-context(.core-narrow) {
+/*.core-narrow core-toolbar,
+core-toolbar.core-narrow {
   height: 56px;
 }
 
-polyfill-next-selector { content: ':host.core-narrow.medium-tall, .core-narrow :host.medium-tall'; }
-:host(.core-narrow.medium-tall),
-:host-context(.core-narrow):host(.medium-tall) {
+.core-narrow core-toolbar.medium-tall,
+core-toolbar.core-narrow.medium-tall {
   height: 112px;
 }
 
-polyfill-next-selector { content: ':host.core-narrow.tall, .core-narrow :host.tall'; }
-:host(.core-narrow.tall),
-:host-context(.core-narrow):host(.tall) {
+.core-narrow core-toolbar.tall,
+core-toolbar.core-narrow.tall {
   height: 168px;
 }
 
-polyfill-next-selector { content: ':host.core-narrow .toolbar-tools, .core-narrow :host .toolbar-tools'; }
-:host(.core-narrow) .toolbar-tools,
-:host-context(.core-narrow) .toolbar-tools {
+.core-narrow .toolbar-tools,
+core-toolbar.core-narrow .toolbar-tools {
   height: 56px;
   padding: 0;
+}*/
+
+@media (max-width: 639px) {
+  core-toolbar {
+    height: 56px;
+  }
+
+  core-toolbar.medium-tall {
+    height: 112px;
+  }
+
+  core-toolbar.tall {
+    height: 168px;
+  }
+
+  core-toolbar .toolbar-tools {
+    height: 56px;
+    padding: 0;
+  }
 }
 
 /* middle bar */
@@ -72,9 +95,11 @@ polyfill-next-selector { content: ':host.core-narrow .toolbar-tools, .core-narro
   top: 0;
   right: 0;
   left: 0;
+  z-index: 5;
 }
 
-:host(.tall, .medium-tall) #middleBar {
+core-toolbar.tall #middleBar,
+core-toolbar.medium-tall #middleBar {
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
 }
@@ -85,22 +110,27 @@ polyfill-next-selector { content: ':host.core-narrow .toolbar-tools, .core-narro
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 10;
 }
 
+/* ******************************* */
+/* TODO: Should content be styled? */
+/* ******************************* */
+
 /* make elements (e.g. buttons) respond to mouse/touch events */
-polyfill-next-selector { content: '.toolbar-tools > *:not([disabled])'; }
+.toolbar-tools > *:not([disabled]),
 ::content > *:not([disabled]) {
   pointer-events: auto;
 }
 
 /* elements spacing */
-polyfill-next-selector { content: '.toolbar-tools > *'; }
+/*polyfill-next-selector { content: '.toolbar-tools > *'; }
 ::content > * {
   margin: 0 8px;
-}
+}*/
 
 /* misc helpers */
-polyfill-next-selector { content: '.toolbar-tools > .fit'; }
+/*polyfill-next-selector { content: '.toolbar-tools > .fit'; }
 ::content > .fit {
   position: absolute;
   top: auto;
@@ -109,9 +139,9 @@ polyfill-next-selector { content: '.toolbar-tools > .fit'; }
   left: 0;
   width: auto;
   margin: 0;
-}
+}*/
 
-polyfill-next-selector { content: ':host .indent'; }
+/*polyfill-next-selector { content: ':host .indent'; }
 ::content > .indent {
   margin-left: 60px;
-}
+}*/

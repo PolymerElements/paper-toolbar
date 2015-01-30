@@ -66,90 +66,102 @@ on itself or any of its ancestors.
 
 <link rel="import" href="../polymer/polymer.html">
 
-<polymer-element name="core-toolbar" attributes="justify middleJustify bottomJustify">
-<template>
+<dom-module id="core-toolbar">
 
   <link rel="stylesheet" href="core-toolbar.css">
 
-  <div id="bottomBar" class="toolbar-tools" center horizontal layout>
-    <content select=".bottom"></content>
-  </div>
+  <template>
 
-  <div id="middleBar" class="toolbar-tools" center horizontal layout>
-    <content select=".middle"></content>
-  </div>
+    <div id="bottomBar" class="toolbar-tools" center horizontal layout>
+      <content select=".bottom"></content>
+    </div>
 
-  <div id="topBar" class="toolbar-tools" center horizontal layout>
-    <content></content>
-  </div>
+    <div id="middleBar" class="toolbar-tools" center horizontal layout>
+      <content select=".middle"></content>
+    </div>
 
-</template>
+    <div id="topBar" class="toolbar-tools" center horizontal layout>
+      <content></content>
+    </div>
+
+  </template>
+
+</dom-module>
+
 <script>
 
-(function() {
+  Polymer({
 
-  Polymer('core-toolbar', {
-    
-    /**
-     * Controls how the items are aligned horizontally.
-     * Options are `start`, `center`, `end`, `between` and `around`.
-     *
-     * @attribute justify
-     * @type string
-     * @default ''
-     */
-    justify: '',
-    
-    /**
-     * Controls how the items are aligned horizontally when they are placed
-     * in the middle.
-     * Options are `start`, `center`, `end`, `between` and `around`.
-     *
-     * @attribute middleJustify
-     * @type string
-     * @default ''
-     */
-    middleJustify: '',
-    
-    /**
-     * Controls how the items are aligned horizontally when they are placed
-     * at the bottom.
-     * Options are `start`, `center`, `end`, `between` and `around`.
-     *
-     * @attribute bottomJustify
-     * @type string
-     * @default ''
-     */
-    bottomJustify: '',
-    
-    justifyChanged: function(old) {
-      this.updateBarJustify(this.$.topBar, this.justify, old);
+    is: 'core-toolbar',
+
+    published: {
+
+      /**
+       * Controls how the items are aligned horizontally when they are placed
+       * at the bottom.
+       * Options are `start`, `center`, `end`, `justified` and `around`.
+       *
+       * @attribute bottomJustify
+       * @type string
+       * @default ''
+       */
+      bottomJustify: String,
+
+      /**
+       * Controls how the items are aligned horizontally.
+       * Options are `start`, `center`, `end`, `justified` and `around`.
+       *
+       * @attribute justify
+       * @type string
+       * @default ''
+       */
+      justify: String,
+
+      /**
+       * Controls how the items are aligned horizontally when they are placed
+       * in the middle.
+       * Options are `start`, `center`, `end`, `justified` and `around`.
+       *
+       * @attribute middleJustify
+       * @type string
+       * @default ''
+       */
+      middleJustify: String
+
     },
-    
-    middleJustifyChanged: function(old) {
-      this.updateBarJustify(this.$.middleBar, this.middleJustify, old);
+
+    bind: {
+      bottomJustify: 'bottomJustifyChanged',
+      justify: 'justifyChanged',
+      middleJustify: 'middleJustifyChanged'
     },
-    
+
     bottomJustifyChanged: function(old) {
       this.updateBarJustify(this.$.bottomBar, this.bottomJustify, old);
     },
-    
+
+    justifyChanged: function(old) {
+      this.updateBarJustify(this.$.topBar, this.justify, old);
+    },
+
+    middleJustifyChanged: function(old) {
+      this.updateBarJustify(this.$.middleBar, this.middleJustify, old);
+    },
+
     updateBarJustify: function(bar, justify, old) {
       if (old) {
         bar.removeAttribute(this.toLayoutAttrName(old));
       }
+
       if (justify) {
         bar.setAttribute(this.toLayoutAttrName(justify), '');
       }
     },
-    
+
     toLayoutAttrName: function(value) {
-      return value === 'between' ? 'justified' : value + '-justified';
+      return value === 'justified' ? value : value + '-justified';
     }
-    
+
   });
 
-})();
-
 </script>
-</polymer-element>
