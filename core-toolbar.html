@@ -41,23 +41,13 @@ When `tall`, items can pin to either the top (default), middle or bottom.  Use
 
     <core-toolbar class="tall">
       <core-icon-button icon="menu"></core-icon-button>
-      <div class="middle indent">Middle Title</div>
-      <div class="bottom indent">Bottom Title</div>
+      <div class="middle">Middle Title</div>
+      <div class="bottom">Bottom Title</div>
     </core-toolbar>
     
 For `medium-tall` toolbar, the middle and bottom contents overlap and are
 pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are 
 still honored separately.
-    
-To make an element completely fit at the bottom of the toolbar, use `fit` along
-with `bottom`.
-
-    <core-toolbar class="tall">
-      <div id="progressBar" class="bottom fit"></div>
-    </core-toolbar>
-
-`core-toolbar` adapts to mobile/narrow layout when there is a `core-narrow` class set
-on itself or any of its ancestors.
 
 @group Polymer Core Elements
 @element core-toolbar
