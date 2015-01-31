@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <html>
   <head>
-    <title>core-toolbar</title>
+    <title>Polymer/core-toolbar</title>
 
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
 
@@ -23,6 +23,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       core-toolbar {
         background-color: #CFA0E9;
+      }
+
+      core-toolbar + core-toolbar {
+        margin-top: 20px;
       }
 
       core-toolbar.dark-theme {
@@ -43,16 +47,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <button icon="add"></button>
     </core-toolbar>
 
-    <br>
-
     <core-toolbar class="dark-theme">
       <button icon="menu"></button>
       <span flex>Toolbar: dark-theme</span>
       <button icon="refresh"></button>
       <button icon="add"></button>
     </core-toolbar>
-
-    <br>
 
     <core-toolbar class="tall">
       <button icon="menu"></button>
@@ -61,45 +61,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <button icon="add"></button>
     </core-toolbar>
 
-    <br>
-
     <core-toolbar class="tall">
       <button icon="menu" class="bottom"></button>
       <span flex class="bottom">Toolbar: tall with elements pin to the bottom</span>
       <button icon="refresh" class="bottom"></button>
       <button icon="add" class="bottom"></button>
     </core-toolbar>
-    
-    <br>
-    
+
     <core-toolbar class="medium-tall">
       <button icon="menu"></button>
       <span flex></span>
       <button icon="refresh">Refresh</button>
       <button icon="add">Add</button>
-      <span class="bottom indent">Toolbar: medium-tall with label aligns to the bottom</span>
+      <span class="bottom">Toolbar: medium-tall with label aligns to the bottom</span>
     </core-toolbar>
 
-    <br>
-    
     <core-toolbar class="tall">
       <button icon="menu"></button>
       <div flex></div>
       <button icon="refresh"></button>
       <button icon="add"></button>
-      <div class="middle indent">label aligns to the middle</div>
-      <div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>
+      <div class="middle">label aligns to the middle</div>
+      <div class="bottom" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>
     </core-toolbar>
-    
-    <br>
-    
+
     <core-toolbar class="tall">
       <button icon="menu"></button>
       <div flex></div>
       <button icon="refresh"></button>
       <button icon="add"></button>
-      <div class="middle indent">element (e.g. progress) fits at the bottom of the toolbar</div>
-      <div class="bottom fit" style="height: 20px; background-color: #0f9d58;"></div>
+      <div class="middle">element (e.g. progress) fits at the bottom of the toolbar</div>
+      <div class="bottom" style="height: 20px; background-color: #0f9d58;" flex></div>
     </core-toolbar>
 
   </body>
