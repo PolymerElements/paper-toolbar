@@ -5,10 +5,10 @@
     "polymer": "Polymer/polymer#0.8-preview"
   },
   "devDependencies": {
-    "core-icon-button": "Polymer/core-icon-button#master",
-    "core-media-query": "Polymer/core-media-query#master"
-  },
-  "resolutions": {
-    "polymer": "0.8-preview"
+    "core-icon-button": "Polymer/core-icon-button#0.8-preview",
+    "core-media-query": "Polymer/core-media-query#0.8-preview",
+    "webcomponentsjs": "~0.5.5",
+    "core-component-page": "Polymer/core-component-page#~0.5.5",
+    "web-component-tester": "~2.2.3"
   }
 }
