@@ -44,31 +44,10 @@ core-toolbar .toolbar-tools {
   pointer-events: none;
 }
 
-/* ******************************* */
-/* TODO: Use media queries? `core-narrow` is used in only one other component */
-/* ******************************* */
-
-/* narrow layout */
-/*.core-narrow core-toolbar,
-core-toolbar.core-narrow {
-  height: 56px;
-}
-
-.core-narrow core-toolbar.medium-tall,
-core-toolbar.core-narrow.medium-tall {
-  height: 112px;
-}
-
-.core-narrow core-toolbar.tall,
-core-toolbar.core-narrow.tall {
-  height: 168px;
-}
-
-.core-narrow .toolbar-tools,
-core-toolbar.core-narrow .toolbar-tools {
-  height: 56px;
-  padding: 0;
-}*/
+/**
+ * TODO: Where should media query breakpoints live so they can be shared across
+ * core-/paper- elements?
+ */
 
 @media (max-width: 639px) {
   core-toolbar {
