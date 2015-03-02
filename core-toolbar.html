@@ -107,10 +107,11 @@ still honored separately.
       // If a blank string or any falsy value is given, no other class name is
       // added.
       if (barJustify) {
-        classObj[barJustify === 'justified' ?
+        var justifyClassName = (barJustify === 'justified') ?
             barJustify :
-            barJustify + '-justified'
-          ] = true;
+            barJustify + '-justified';
+
+        classObj[justifyClassName] = true;
       }
 
       return classNames(classObj);
