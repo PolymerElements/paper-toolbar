@@ -1,6 +1,9 @@
 {
   "name": "core-toolbar",
   "private": true,
+  "authors": [
+    "The Polymer Authors"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#0.8-preview",
     "layout": "Polymer/layout"
@@ -11,5 +14,11 @@
     "webcomponentsjs": "~0.5.5",
     "core-component-page": "Polymer/core-component-page#~0.5.5",
     "web-component-tester": "~2.2.3"
+  },
+  "ignore": [],
+  "main": "core-toolbar.html",
+  "repo": {
+    "type": "git",
+    "url": "git://github.com/Polymer/core-toolbar.git"
   }
 }
