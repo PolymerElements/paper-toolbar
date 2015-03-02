@@ -55,6 +55,7 @@ still honored separately.
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../layout/layout.html">
 
 <dom-module id="core-toolbar">
 
@@ -62,15 +63,15 @@ still honored separately.
 
   <template>
 
-    <div id="bottomBar" class="toolbar-tools" center horizontal layout>
+    <div id="bottomBar" class-name="[[bottomBarClassName]]">
       <content select=".bottom"></content>
     </div>
 
-    <div id="middleBar" class="toolbar-tools" center horizontal layout>
+    <div id="middleBar" class-name="[[middleBarClassName]]">
       <content select=".middle"></content>
     </div>
 
-    <div id="topBar" class="toolbar-tools" center horizontal layout>
+    <div id="topBar" class-name="[[topBarClassName]]">
       <content></content>
     </div>
 
@@ -80,78 +81,109 @@ still honored separately.
 
 <script>
 
-  Polymer({
+  (function() {
 
-    is: 'core-toolbar',
+    'use strict';
 
-    published: {
-
-      /**
-       * Controls how the items are aligned horizontally when they are placed
-       * at the bottom.
-       * Options are `start`, `center`, `end`, `justified` and `around`.
-       *
-       * @attribute bottomJustify
-       * @type string
-       * @default ''
-       */
-      bottomJustify: String,
-
-      /**
-       * Controls how the items are aligned horizontally.
-       * Options are `start`, `center`, `end`, `justified` and `around`.
-       *
-       * @attribute justify
-       * @type string
-       * @default ''
-       */
-      justify: String,
-
-      /**
-       * Controls how the items are aligned horizontally when they are placed
-       * in the middle.
-       * Options are `start`, `center`, `end`, `justified` and `around`.
-       *
-       * @attribute middleJustify
-       * @type string
-       * @default ''
-       */
-      middleJustify: String
-
-    },
-
-    bind: {
-      bottomJustify: 'bottomJustifyChanged',
-      justify: 'justifyChanged',
-      middleJustify: 'middleJustifyChanged'
-    },
-
-    bottomJustifyChanged: function(old) {
-      this.updateBarJustify(this.$.bottomBar, this.bottomJustify, old);
-    },
-
-    justifyChanged: function(old) {
-      this.updateBarJustify(this.$.topBar, this.justify, old);
-    },
-
-    middleJustifyChanged: function(old) {
-      this.updateBarJustify(this.$.middleBar, this.middleJustify, old);
-    },
-
-    updateBarJustify: function(bar, justify, old) {
-      if (old) {
-        bar.removeAttribute(this.toLayoutAttrName(old));
+    function classNames(obj) {
+      var classNames = [];
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key) && obj[key]) {
+          classNames.push(key);
+        }
       }
 
-      if (justify) {
-        bar.setAttribute(this.toLayoutAttrName(justify), '');
-      }
-    },
-
-    toLayoutAttrName: function(value) {
-      return value === 'justified' ? value : value + '-justified';
+      return classNames.join(' ');
     }
 
-  });
+    function calcBarClassName(barJustify) {
+      var classObj = {
+        center: true,
+        horizontal: true,
+        layout: true,
+        'toolbar-tools': true
+      };
+
+      // If a blank string or any falsy value is given, no other class name is
+      // added.
+      if (barJustify) {
+        classObj[barJustify === 'justified' ?
+            barJustify :
+            barJustify + '-justified'
+          ] = true;
+      }
+
+      return classNames(classObj);
+    }
+
+    Polymer({
+
+      is: 'core-toolbar',
+
+      computed: {
+        bottomBarClassName: 'calcBottomBarClassName(bottomJustify)',
+        middleBarClassName: 'calcMiddleBarClassName(middleJustify)',
+        topBarClassName: 'calcTopBarClassName(justify)'
+      },
+
+      published: {
+
+        /**
+         * Controls how the items are aligned horizontally when they are placed
+         * at the bottom.
+         * Options are `start`, `center`, `end`, `justified` and `around`.
+         *
+         * @attribute bottomJustify
+         * @type string
+         * @default ''
+         */
+        bottomJustify: String,
+
+        /**
+         * Controls how the items are aligned horizontally.
+         * Options are `start`, `center`, `end`, `justified` and `around`.
+         *
+         * @attribute justify
+         * @type string
+         * @default ''
+         */
+        justify: String,
+
+        /**
+         * Controls how the items are aligned horizontally when they are placed
+         * in the middle.
+         * Options are `start`, `center`, `end`, `justified` and `around`.
+         *
+         * @attribute middleJustify
+         * @type string
+         * @default ''
+         */
+        middleJustify: String
+
+      },
+
+      configure: function() {
+        return {
+          bottomJustify: '',
+          justify: '',
+          middleJustify: ''
+        };
+      },
+
+      calcBottomBarClassName: function(bottomJustify) {
+        return calcBarClassName(bottomJustify);
+      },
+
+      calcMiddleBarClassName: function(middleJustify) {
+        return calcBarClassName(middleJustify);
+      },
+
+      calcTopBarClassName: function(justify) {
+        return calcBarClassName(justify);
+      }
+
+    });
+
+  }());
 
 </script>
