@@ -9,8 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 `core-toolbar` is a horizontal bar containing items that can be used for
-label, navigation, search and actions.  The items place inside the 
-`core-toolbar` are projected into a `horizontal center layout` container inside of 
+label, navigation, search and actions.  The items place inside the
+`core-toolbar` are projected into a `horizontal center layout` container inside of
 `core-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
 sizing.
 
@@ -44,9 +44,9 @@ When `tall`, items can pin to either the top (default), middle or bottom.  Use
       <div class="middle">Middle Title</div>
       <div class="bottom">Bottom Title</div>
     </core-toolbar>
-    
+
 For `medium-tall` toolbar, the middle and bottom contents overlap and are
-pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are 
+pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are
 still honored separately.
 
 @group Polymer Core Elements
@@ -96,7 +96,7 @@ still honored separately.
       return classNames.join(' ');
     }
 
-    function calcBarClassName(barJustify) {
+    function computeBarClassName(barJustify) {
       var classObj = {
         center: true,
         horizontal: true,
@@ -122,9 +122,9 @@ still honored separately.
       is: 'core-toolbar',
 
       computed: {
-        bottomBarClassName: 'calcBottomBarClassName(bottomJustify)',
-        middleBarClassName: 'calcMiddleBarClassName(middleJustify)',
-        topBarClassName: 'calcTopBarClassName(justify)'
+        bottomBarClassName: 'computeBottomBarClassName(bottomJustify)',
+        middleBarClassName: 'computeMiddleBarClassName(middleJustify)',
+        topBarClassName: 'computeTopBarClassName(justify)'
       },
 
       published: {
@@ -171,16 +171,16 @@ still honored separately.
         };
       },
 
-      calcBottomBarClassName: function(bottomJustify) {
-        return calcBarClassName(bottomJustify);
+      computeBottomBarClassName: function(bottomJustify) {
+        return computeBarClassName(bottomJustify);
       },
 
-      calcMiddleBarClassName: function(middleJustify) {
-        return calcBarClassName(middleJustify);
+      computeMiddleBarClassName: function(middleJustify) {
+        return computeBarClassName(middleJustify);
       },
 
-      calcTopBarClassName: function(justify) {
-        return calcBarClassName(justify);
+      computeTopBarClassName: function(justify) {
+        return computeBarClassName(justify);
       }
 
     });
