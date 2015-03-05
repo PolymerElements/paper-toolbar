@@ -96,38 +96,23 @@ still honored separately.
       return classNames.join(' ');
     }
 
-    function computeBarClassName(barJustify) {
-      var classObj = {
-        center: true,
-        horizontal: true,
-        layout: true,
-        'toolbar-tools': true
-      };
-
-      // If a blank string or any falsy value is given, no other class name is
-      // added.
-      if (barJustify) {
-        var justifyClassName = (barJustify === 'justified') ?
-            barJustify :
-            barJustify + '-justified';
-
-        classObj[justifyClassName] = true;
-      }
-
-      return classNames(classObj);
-    }
-
     Polymer({
 
       is: 'core-toolbar',
 
-      computed: {
-        bottomBarClassName: 'computeBottomBarClassName(bottomJustify)',
-        middleBarClassName: 'computeMiddleBarClassName(middleJustify)',
-        topBarClassName: 'computeTopBarClassName(justify)'
-      },
+      properties: {
 
-      published: {
+        bottomBarClassName: {
+          computed: 'computeBarClassName(bottomJustify)'
+        },
+
+        middleBarClassName: {
+          computed: 'computeBarClassName(middleJustify)'
+        },
+
+        topBarClassName: {
+          computed: 'computeBarClassName(justify)'
+        },
 
         /**
          * Controls how the items are aligned horizontally when they are placed
@@ -138,7 +123,10 @@ still honored separately.
          * @type string
          * @default ''
          */
-        bottomJustify: String,
+        bottomJustify: {
+          type: String,
+          value: ''
+        },
 
         /**
          * Controls how the items are aligned horizontally.
@@ -148,7 +136,10 @@ still honored separately.
          * @type string
          * @default ''
          */
-        justify: String,
+        justify: {
+          type: String,
+          value: ''
+        },
 
         /**
          * Controls how the items are aligned horizontally when they are placed
@@ -159,28 +150,32 @@ still honored separately.
          * @type string
          * @default ''
          */
-        middleJustify: String
+        middleJustify: {
+          type: String,
+          value: ''
+        }
 
       },
 
-      configure: function() {
-        return {
-          bottomJustify: '',
-          justify: '',
-          middleJustify: ''
+      computeBarClassName: function(barJustify) {
+        var classObj = {
+          center: true,
+          horizontal: true,
+          layout: true,
+          'toolbar-tools': true
         };
-      },
 
-      computeBottomBarClassName: function(bottomJustify) {
-        return computeBarClassName(bottomJustify);
-      },
+        // If a blank string or any falsy value is given, no other class name is
+        // added.
+        if (barJustify) {
+          var justifyClassName = (barJustify === 'justified') ?
+              barJustify :
+              barJustify + '-justified';
 
-      computeMiddleBarClassName: function(middleJustify) {
-        return computeBarClassName(middleJustify);
-      },
+          classObj[justifyClassName] = true;
+        }
 
-      computeTopBarClassName: function(justify) {
-        return computeBarClassName(justify);
+        return classNames(classObj);
       }
 
     });
