@@ -59,19 +59,113 @@ still honored separately.
 
 <dom-module id="core-toolbar">
 
-  <link rel="stylesheet" href="core-toolbar.css">
+  <style>
+    :host {
+      /* technical */
+      display: block;
+      position: relative;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      /* size */
+      min-height: 64px;
+
+      /* typography */
+      font-size: 1.3em;
+
+      /* background */
+      background-color: #CFD8DC;
+    }
+
+    :host(.animate) {
+      /* transition */
+      transition: height 0.18s ease-in;
+    }
+
+    :host(.medium-tall) {
+      height: 128px;
+    }
+
+    :host(.tall) {
+      height: 192px;
+    }
+
+    .toolbar-tools {
+      position: relative;
+      height: 64px;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+
+    /*
+     * TODO: Where should media query breakpoints live so they can be shared between elements?
+     */
+
+    @media (max-width: 639px) {
+      :host {
+        height: 56px;
+      }
+
+      :host(.medium-tall) {
+        height: 112px;
+      }
+
+      :host(.tall) {
+        height: 168px;
+      }
+
+      .toolbar-tools {
+        height: 56px;
+        padding: 0;
+      }
+    }
+
+    /* middle bar */
+    #middleBar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+
+    :host(.tall) #middleBar,
+    :host(.medium-tall) #middleBar {
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+    }
+
+    /* bottom bar */
+    #bottomBar {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    /*
+     * make elements (e.g. buttons) respond to mouse/touch events
+     *
+     * `.toolbar-tools` disables touch events so multiple toolbars can stack and not
+     * absorb events. All children must have pointer events re-enabled to work as
+     * expected.
+     */
+    .toolbar-tools > ::content > *:not([disabled]) {
+      pointer-events: auto;
+    }
+
+  </style>
 
   <template>
 
-    <div id="bottomBar" class-name="[[bottomBarClassName]]">
+    <div id="bottomBar" class-name="[[_bottomBarClassName]]">
       <content select=".bottom"></content>
     </div>
 
-    <div id="middleBar" class-name="[[middleBarClassName]]">
+    <div id="middleBar" class-name="[[_middleBarClassName]]">
       <content select=".middle"></content>
     </div>
 
-    <div id="topBar" class-name="[[topBarClassName]]">
+    <div id="topBar" class-name="[[_topBarClassName]]">
       <content></content>
     </div>
 
@@ -101,18 +195,6 @@ still honored separately.
       is: 'core-toolbar',
 
       properties: {
-
-        bottomBarClassName: {
-          computed: 'computeBarClassName(bottomJustify)'
-        },
-
-        middleBarClassName: {
-          computed: 'computeBarClassName(middleJustify)'
-        },
-
-        topBarClassName: {
-          computed: 'computeBarClassName(justify)'
-        },
 
         /**
          * Controls how the items are aligned horizontally when they are placed
@@ -153,6 +235,18 @@ still honored separately.
         middleJustify: {
           type: String,
           value: ''
+        },
+
+        _bottomBarClassName: {
+          computed: 'computeBarClassName(bottomJustify)'
+        },
+
+        _middleBarClassName: {
+          computed: 'computeBarClassName(middleJustify)'
+        },
+
+        _topBarClassName: {
+          computed: 'computeBarClassName(justify)'
         }
 
       },

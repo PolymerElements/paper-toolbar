@@ -8,79 +8,79 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>core-range-basic</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<head>
+  <meta charset="UTF-8">
+  <title>core-range-basic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <script src="../../webcomponentsjs/webcomponents.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../core-toolbar.html">
+  <link rel="import" href="../core-toolbar.html">
 
-  </head>
-  <body>
+</head>
+<body>
 
-    <core-toolbar></core-toolbar>
+  <core-toolbar></core-toolbar>
 
-    <script>
+  <script>
 
-      var toolbar = document.querySelector('core-toolbar');
+    var toolbar = document.querySelector('core-toolbar');
 
-      suite('basic', function() {
-        
-        test('check default height', function() {
-          assert.equal(toolbar.offsetHeight, 64);
-        });
-        
-        test('check medium-tall height', function(done) {
-          toolbar.classList.add('medium-tall');
-          asyncPlatformFlush(function() {
-            assert.equal(toolbar.offsetHeight, 128);
-            done();
-          });
-        });
-        
-        test('check tall height', function(done) {
-          toolbar.classList.add('tall');
-          asyncPlatformFlush(function() {
-            assert.equal(toolbar.offsetHeight, 192);
-            done();
-          });
-        });
-        
-        test('item at top', function(done) {
-          var item = document.createElement('div');
-          toolbar.appendChild(item)
-          asyncPlatformFlush(function() {
-            assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.topBar);
-            done();
-          });
-        });
-        
-        test('item at middle', function(done) {
-          var item = document.createElement('div');
-          item.classList.add('middle');
-          toolbar.appendChild(item)
-          asyncPlatformFlush(function() {
-            assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.middleBar);
-            done();
-          });
-        });
-        
-        test('item at bottom', function(done) {
-          var item = document.createElement('div');
-          item.classList.add('bottom');
-          toolbar.appendChild(item)
-          asyncPlatformFlush(function() {
-            assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.bottomBar);
-            done();
-          });
-        });
-        
+    suite('basic', function() {
+
+      test('check default height', function() {
+        assert.equal(toolbar.offsetHeight, 64);
       });
 
-    </script>
+      test('check medium-tall height', function(done) {
+        toolbar.classList.add('medium-tall');
+        asyncPlatformFlush(function() {
+          assert.equal(toolbar.offsetHeight, 128);
+          done();
+        });
+      });
 
-  </body>
+      test('check tall height', function(done) {
+        toolbar.classList.add('tall');
+        asyncPlatformFlush(function() {
+          assert.equal(toolbar.offsetHeight, 192);
+          done();
+        });
+      });
+
+      test('item at top', function(done) {
+        var item = document.createElement('div');
+        toolbar.appendChild(item)
+        asyncPlatformFlush(function() {
+          assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.topBar);
+          done();
+        });
+      });
+
+      test('item at middle', function(done) {
+        var item = document.createElement('div');
+        item.classList.add('middle');
+        toolbar.appendChild(item)
+        asyncPlatformFlush(function() {
+          assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.middleBar);
+          done();
+        });
+      });
+
+      test('item at bottom', function(done) {
+        var item = document.createElement('div');
+        item.classList.add('bottom');
+        toolbar.appendChild(item)
+        asyncPlatformFlush(function() {
+          assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.bottomBar);
+          done();
+        });
+      });
+
+    });
+
+  </script>
+
+</body>
 </html>
