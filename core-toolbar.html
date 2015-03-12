@@ -149,8 +149,7 @@ still honored separately.
      * absorb events. All children must have pointer events re-enabled to work as
      * expected.
      */
-    .toolbar-tools > *:not([disabled]),
-    ::content > *:not([disabled]) {
+    .toolbar-tools > ::content > *:not([disabled]) {
       pointer-events: auto;
     }
 
