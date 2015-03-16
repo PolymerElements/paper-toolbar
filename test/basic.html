@@ -10,72 +10,78 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>core-range-basic</title>
+  <title>core-range basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
+  <link rel="import" href="../../test-fixture/test-fixture.html">
+  <link rel="import" href="../../polymer/polymer.html">
   <link rel="import" href="../core-toolbar.html">
 
 </head>
 <body>
 
-  <core-toolbar></core-toolbar>
+  <test-fixture id="CoreToolbar">
+    <template>
+      <core-toolbar></core-toolbar>
+    </template>
+  </test-fixture>
 
   <script>
+    'use strict';
 
-    var toolbar = document.querySelector('core-toolbar');
+    suite('<core-toolbar>', function() {
 
-    suite('basic', function() {
+      var toolbar;
 
-      test('check default height', function() {
-        assert.equal(toolbar.offsetHeight, 64);
+      setup(function() {
+        toolbar = fixture('CoreToolbar');
       });
 
-      test('check medium-tall height', function(done) {
+      test('has expected default height', function() {
+        expect(toolbar.offsetHeight).to.be.eql(64);
+      });
+
+      test('has expected medium-tall height', function() {
         toolbar.classList.add('medium-tall');
-        asyncPlatformFlush(function() {
-          assert.equal(toolbar.offsetHeight, 128);
-          done();
-        });
+        expect(toolbar.offsetHeight).to.be.eql(128);
       });
 
-      test('check tall height', function(done) {
+      test('has expected tall height', function() {
         toolbar.classList.add('tall');
-        asyncPlatformFlush(function() {
-          assert.equal(toolbar.offsetHeight, 192);
-          done();
-        });
+        expect(toolbar.offsetHeight).to.be.eql(192);
       });
 
-      test('item at top', function(done) {
+      test('distributes nodes to topBar by default', function() {
         var item = document.createElement('div');
-        toolbar.appendChild(item)
-        asyncPlatformFlush(function() {
-          assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.topBar);
-          done();
-        });
+        Polymer.dom(toolbar).appendChild(item);
+        Polymer.dom.flush();
+
+        var insertionPoint = Polymer.dom(item).getDestinationInsertionPoints()[0];
+        expect(Polymer.dom(insertionPoint).parentNode).to.be.eql(toolbar.$.topBar);
       });
 
-      test('item at middle', function(done) {
+      test('distributes nodes with "middle" class to middleBar', function() {
         var item = document.createElement('div');
         item.classList.add('middle');
-        toolbar.appendChild(item)
-        asyncPlatformFlush(function() {
-          assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.middleBar);
-          done();
-        });
+        Polymer.dom(toolbar).appendChild(item);
+        Polymer.dom.flush();
+
+        var insertionPoint = Polymer.dom(item).getDestinationInsertionPoints()[0];
+        expect(Polymer.dom(insertionPoint).parentNode).to.be.eql(toolbar.$.middleBar);
       });
 
-      test('item at bottom', function(done) {
+      test('distributes nodes with "bottom" class to bottombar', function() {
         var item = document.createElement('div');
         item.classList.add('bottom');
-        toolbar.appendChild(item)
-        asyncPlatformFlush(function() {
-          assert.equal(item.getDestinationInsertionPoints()[0].parentElement, toolbar.$.bottomBar);
-          done();
-        });
+        Polymer.dom(toolbar).appendChild(item);
+        Polymer.dom.flush();
+
+        var insertionPoint = Polymer.dom(item).getDestinationInsertionPoints()[0];
+        expect(Polymer.dom(insertionPoint).parentNode).to.be.eql(toolbar.$.bottomBar);
       });
 
     });
