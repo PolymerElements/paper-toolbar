@@ -157,15 +157,15 @@ still honored separately.
 
   <template>
 
-    <div id="bottomBar" class-name="[[_bottomBarClassName]]">
+    <div id="bottomBar" class-name="[[_computeBarClassName(bottomJustify)]]">
       <content select=".bottom"></content>
     </div>
 
-    <div id="middleBar" class-name="[[_middleBarClassName]]">
+    <div id="middleBar" class-name="[[_computeBarClassName(middleJustify)]]">
       <content select=".middle"></content>
     </div>
 
-    <div id="topBar" class-name="[[_topBarClassName]]">
+    <div id="topBar" class-name="[[_computeBarClassName(justify)]]">
       <content></content>
     </div>
 
@@ -235,23 +235,11 @@ still honored separately.
         middleJustify: {
           type: String,
           value: ''
-        },
-
-        _bottomBarClassName: {
-          computed: 'computeBarClassName(bottomJustify)'
-        },
-
-        _middleBarClassName: {
-          computed: 'computeBarClassName(middleJustify)'
-        },
-
-        _topBarClassName: {
-          computed: 'computeBarClassName(justify)'
         }
 
       },
 
-      computeBarClassName: function(barJustify) {
+      _computeBarClassName: function(barJustify) {
         var classObj = {
           center: true,
           horizontal: true,
