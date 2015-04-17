@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>core-range basic tests</title>
+  <title>paper-toolbar basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
@@ -19,40 +19,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <link rel="import" href="../../test-fixture/test-fixture.html">
   <link rel="import" href="../../polymer/polymer.html">
-  <link rel="import" href="../core-toolbar.html">
+  <link rel="import" href="../paper-toolbar.html">
 
 </head>
 <body>
 
-  <test-fixture id="CoreToolbar">
+  <test-fixture id="basic">
     <template>
-      <core-toolbar></core-toolbar>
+      <paper-toolbar></paper-toolbar>
     </template>
   </test-fixture>
 
   <script>
     'use strict';
 
-    suite('<core-toolbar>', function() {
+    suite('<paper-toolbar>', function() {
 
       var toolbar;
 
       setup(function() {
-        toolbar = fixture('CoreToolbar');
-      });
-
-      test('has expected default height', function() {
-        expect(toolbar.offsetHeight).to.be.eql(64);
+        toolbar = fixture('basic');
       });
 
       test('has expected medium-tall height', function() {
+        var old = toolbar.offsetHeight;
         toolbar.classList.add('medium-tall');
-        expect(toolbar.offsetHeight).to.be.eql(128);
+        expect(toolbar.offsetHeight).to.be.eql(old * 2);
       });
 
       test('has expected tall height', function() {
+        var old = toolbar.offsetHeight;
         toolbar.classList.add('tall');
-        expect(toolbar.offsetHeight).to.be.eql(192);
+        expect(toolbar.offsetHeight).to.be.eql(old * 3);
       });
 
       test('distributes nodes to topBar by default', function() {

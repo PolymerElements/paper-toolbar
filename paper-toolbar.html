@@ -8,56 +8,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-`core-toolbar` is a horizontal bar containing items that can be used for
+`paper-toolbar` is a horizontal bar containing items that can be used for
 label, navigation, search and actions.  The items place inside the
-`core-toolbar` are projected into a `class="horizontal center layout"` container inside of
-`core-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
+`paper-toolbar` are projected into a `class="horizontal center layout"` container inside of
+`paper-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
 sizing.
 
 Example:
 
-    <core-toolbar>
-      <core-icon-button icon="menu" on-tap="{{menuAction}}"></core-icon-button>
+    <paper-toolbar>
+      <paper-icon-button icon="menu" on-tap="{{menuAction}}"></paper-icon-button>
       <div flex>Title</div>
-      <core-icon-button icon="more" on-tap="{{moreAction}}"></core-icon-button>
-    </core-toolbar>
+      <paper-icon-button icon="more" on-tap="{{moreAction}}"></paper-icon-button>
+    </paper-toolbar>
 
-`core-toolbar` has a standard height, but can made be taller by setting `tall`
-class on the `core-toolbar`.  This will make the toolbar 3x the normal height.
+`paper-toolbar` has a standard height, but can made be taller by setting `tall`
+class on the `paper-toolbar`.  This will make the toolbar 3x the normal height.
 
-    <core-toolbar class="tall">
-      <core-icon-button icon="menu"></core-icon-button>
-    </core-toolbar>
+    <paper-toolbar class="tall">
+      <paper-icon-button icon="menu"></paper-icon-button>
+    </paper-toolbar>
 
 Apply `medium-tall` class to make the toolbar medium tall.  This will make the
 toolbar 2x the normal height.
 
-    <core-toolbar class="medium-tall">
-      <core-icon-button icon="menu"></core-icon-button>
-    </core-toolbar>
+    <paper-toolbar class="medium-tall">
+      <paper-icon-button icon="menu"></paper-icon-button>
+    </paper-toolbar>
 
 When `tall`, items can pin to either the top (default), middle or bottom.  Use
 `middle` class for middle content and `bottom` class for bottom content.
 
-    <core-toolbar class="tall">
-      <core-icon-button icon="menu"></core-icon-button>
+    <paper-toolbar class="tall">
+      <paper-icon-button icon="menu"></paper-icon-button>
       <div class="middle">Middle Title</div>
       <div class="bottom">Bottom Title</div>
-    </core-toolbar>
+    </paper-toolbar>
 
 For `medium-tall` toolbar, the middle and bottom contents overlap and are
 pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are
 still honored separately.
 
 @group Polymer Core Elements
-@element core-toolbar
+@element paper-toolbar
 @homepage github.io
 -->
 
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../layout/layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
 
-<dom-module id="core-toolbar">
+<style is="x-style">
+
+  * {
+
+    --paper-toolbar-background: var(--default-primary-color);
+    --paper-toolbar-color: var(--text-primary-color);
+  }
+</style>
+
+<dom-module id="paper-toolbar">
 
   <style>
     :host {
@@ -68,13 +77,13 @@ still honored separately.
       -moz-box-sizing: border-box;
 
       /* size */
-      min-height: 64px;
+      height: 64px;
 
-      /* typography */
-      font-size: 1.3em;
+      background: var(--paper-toolbar-background);
+      color: var(--paper-toolbar-color);
+      mixin(--paper-font-title);
 
-      /* background */
-      background-color: #CFD8DC;
+      mixin(--paper-toolbar);
     }
 
     :host(.animate) {
@@ -192,7 +201,9 @@ still honored separately.
 
     Polymer({
 
-      is: 'core-toolbar',
+      is: 'paper-toolbar',
+
+      enableCustomStyleProperties: true,
 
       properties: {
 
