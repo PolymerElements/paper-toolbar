@@ -57,7 +57,7 @@ still honored separately.
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
 
-<style is="x-style">
+<style is="custom-style">
 
   * {
 
@@ -81,9 +81,9 @@ still honored separately.
 
       background: var(--paper-toolbar-background);
       color: var(--paper-toolbar-color);
-      mixin(--paper-font-title);
+      @apply(--paper-font-title);
 
-      mixin(--paper-toolbar);
+      @apply(--paper-toolbar);
     }
 
     :host(.animate) {
@@ -202,8 +202,6 @@ still honored separately.
     Polymer({
 
       is: 'paper-toolbar',
-
-      enableCustomStyleProperties: true,
 
       properties: {
 
