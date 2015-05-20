@@ -38,49 +38,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <paper-toolbar>
     <iron-icon icon="menu"></iron-icon>
-    <span class="flex">Toolbar</span>
+    <span class="flex">&lt;paper-toolbar&gt; sets a default height based on a media query </span>
     <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
-  </paper-toolbar>
-
-  <paper-toolbar class="tall">
-    <iron-icon icon="menu"></iron-icon>
-    <span class="flex">Toolbar: tall</span>
-    <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
-  </paper-toolbar>
-
-  <paper-toolbar class="tall">
-    <iron-icon icon="menu" class="bottom"></iron-icon>
-    <span class="flex bottom">Toolbar: tall with elements pin to the bottom</span>
-    <iron-icon icon="refresh" class="bottom"></iron-icon>
-    <iron-icon icon="add" class="bottom">+</iron-icon>
+    <iron-icon icon="add"></iron-icon>
   </paper-toolbar>
 
   <paper-toolbar class="medium-tall">
     <iron-icon icon="menu"></iron-icon>
-    <span class="flex"></span>
+    <span class="flex">&lt;paper-toolbar class="medium-tall"&gt; sets a height that's 2x default</span>
     <iron-icon icon="refresh"></iron-icon>
     <iron-icon icon="add">+</iron-icon>
-    <span class="bottom">Toolbar: medium-tall with label aligns to the bottom</span>
   </paper-toolbar>
 
   <paper-toolbar class="tall">
     <iron-icon icon="menu"></iron-icon>
-    <div class="flex"></div>
+    <span class="flex">&lt;paper-toolbar class="tall"&gt; sets a height that's 3x default</span>
     <iron-icon icon="refresh"></iron-icon>
     <iron-icon icon="add">+</iron-icon>
-    <div class="middle">label aligns to the middle</div>
-    <div class="bottom">some stuffs align to the bottom</div>
   </paper-toolbar>
 
   <paper-toolbar class="tall">
     <iron-icon icon="menu"></iron-icon>
-    <div class="flex"></div>
+    <div class="flex">&lt;paper-toolbar class="tall"&gt;</div>
     <iron-icon icon="refresh"></iron-icon>
     <iron-icon icon="add">+</iron-icon>
-    <div class="middle">element (e.g. progress) fits at the bottom of the toolbar</div>
-    <div class="bottom flex" style="height: 20px; background-color: #0f9d58;"></div>
+    <div class="middle">&lt;div class="middle"&gt; places this nested element here</div>
+    <div class="bottom">&lt;div class="bottom"&gt; places this nested element here</div>
+  </paper-toolbar>
+
+  <paper-toolbar class="tall">
+    <iron-icon icon="menu"></iron-icon>
+    <div class="flex">&lt;paper-toolbar class="tall"&gt;</div>
+    <iron-icon icon="refresh"></iron-icon>
+    <iron-icon icon="add">+</iron-icon>
+    <div class="middle">Below, &lt;progress class="bottom flex" value="30" max="100"&semi;&gt; pins a progress bar to the full width of .bottom</div> 
+    <progress class="bottom flex" value="30" max="100"></progress>
   </paper-toolbar>
 
 </body>
