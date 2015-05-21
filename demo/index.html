@@ -16,70 +16,64 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-  <link rel="import" href="../../iron-icon/iron-icon.html">
   <link rel="import" href="../../iron-icons/iron-icons.html">
+  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
   <link rel="import" href="../../paper-styles/paper-styles.html">
   <link rel="import" href="../paper-toolbar.html">
 
   <style>
-
-  paper-toolbar + paper-toolbar {
+    paper-toolbar + paper-toolbar {
       margin-top: 20px;
     }
-
-    iron-icon:not(:last-child) {
-      margin-right: 8px;
-    }
-
   </style>
 
 </head>
 <body>
 
   <paper-toolbar>
-    <iron-icon icon="menu"></iron-icon>
-    <span class="flex">Toolbar</span>
-    <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
+    <paper-icon-button icon="menu"></paper-icon-button>
+    <span title>Toolbar</span>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
   </paper-toolbar>
 
   <paper-toolbar class="tall">
-    <iron-icon icon="menu"></iron-icon>
-    <span class="flex">Toolbar: tall</span>
-    <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
+    <paper-icon-button icon="menu"></paper-icon-button>
+    <span title>Toolbar: tall</span>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
   </paper-toolbar>
 
   <paper-toolbar class="tall">
-    <iron-icon icon="menu" class="bottom"></iron-icon>
-    <span class="flex bottom">Toolbar: tall with elements pin to the bottom</span>
-    <iron-icon icon="refresh" class="bottom"></iron-icon>
-    <iron-icon icon="add" class="bottom">+</iron-icon>
+    <paper-icon-button icon="menu" class="bottom"></paper-icon-button>
+    <span title class="bottom">Toolbar: tall with elements pin to the bottom</span>
+    <paper-icon-button icon="refresh" class="bottom"></paper-icon-button>
+    <paper-icon-button icon="add" class="bottom">+</paper-icon-button>
   </paper-toolbar>
 
   <paper-toolbar class="medium-tall">
-    <iron-icon icon="menu"></iron-icon>
+    <paper-icon-button icon="menu"></paper-icon-button>
     <span class="flex"></span>
-    <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
-    <span class="bottom">Toolbar: medium-tall with label aligns to the bottom</span>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
+    <span title class="bottom">Toolbar: medium-tall with label aligns to the bottom</span>
   </paper-toolbar>
 
   <paper-toolbar class="tall">
-    <iron-icon icon="menu"></iron-icon>
+    <paper-icon-button icon="menu"></paper-icon-button>
     <div class="flex"></div>
-    <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
-    <div class="middle">label aligns to the middle</div>
-    <div class="bottom">some stuffs align to the bottom</div>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
+    <div title class="middle">label aligns to the middle</div>
+    <div title class="bottom">some stuffs align to the bottom</div>
   </paper-toolbar>
 
   <paper-toolbar class="tall">
-    <iron-icon icon="menu"></iron-icon>
+    <paper-icon-button icon="menu"></paper-icon-button>
     <div class="flex"></div>
-    <iron-icon icon="refresh"></iron-icon>
-    <iron-icon icon="add">+</iron-icon>
-    <div class="middle">element (e.g. progress) fits at the bottom of the toolbar</div>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
+    <div title class="middle">element (e.g. progress) fits at the bottom of the toolbar</div>
     <div class="bottom flex" style="height: 20px; background-color: #0f9d58;"></div>
   </paper-toolbar>
 
