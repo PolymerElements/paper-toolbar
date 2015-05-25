@@ -10,13 +10,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
 
-<style is="custom-style">
-  :root {
-    --paper-toolbar-background: var(--default-primary-color);
-    --paper-toolbar-color: var(--text-primary-color);
-  }
-</style>
-
 <!--
 `paper-toolbar` is a horizontal bar containing items that can be used for
 label, navigation, search and actions.  The items place inside the
@@ -59,17 +52,21 @@ For `medium-tall` toolbar, the middle and bottom contents overlap and are
 pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are
 still honored separately.
 
-@group Polymer Core Elements
-@element paper-toolbar
-@demo demo/index.html
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-toolbar-background` | Toolbar background color     | `--default-primary-color`
+`--paper-toolbar-color`      | Toolbar foreground color     | `--text-primary-color`
+`--paper-toolbar`            | Mixin applied to the toolbar | `{}`
 -->
 
 <dom-module id="paper-toolbar">
 
   <style>
     :host {
-      @apply(--paper-toolbar);
-
       /* technical */
       display: block;
       position: relative;
@@ -79,8 +76,10 @@ still honored separately.
       /* size */
       height: 64px;
 
-      background: var(--paper-toolbar-background);
-      color: var(--paper-toolbar-color);
+      background: var(--paper-toolbar-background, --default-primary-color);
+      color: var(--paper-toolbar-color, --text-primary-color);
+
+      @apply(--paper-toolbar);
     }
 
     :host(.animate) {
