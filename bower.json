@@ -1,6 +1,7 @@
 {
   "name": "paper-toolbar",
   "version": "0.9.3",
+  "license": "http://polymer.github.io/LICENSE.txt",
   "description": "A material design toolbar that is easily customizable",
   "private": true,
   "main": [
