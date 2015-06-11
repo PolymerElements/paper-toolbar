@@ -133,7 +133,6 @@ be used as the label of the toolbar via `aria-labelledby`.
 
     #topBar {
       position: relative;
-      z-index: 1;
     }
 
     /* middle bar */
@@ -142,7 +141,6 @@ be used as the label of the toolbar via `aria-labelledby`.
       top: 0;
       right: 0;
       left: 0;
-      z-index: 2;
     }
 
     :host(.tall) #middleBar,
@@ -157,7 +155,6 @@ be used as the label of the toolbar via `aria-labelledby`.
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: 1;
     }
 
     /*
@@ -175,6 +172,7 @@ be used as the label of the toolbar via `aria-labelledby`.
       @apply(--paper-font-title);
       @apply(--layout-flex);
 
+      pointer-events: none;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
