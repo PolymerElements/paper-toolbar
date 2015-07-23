@@ -68,6 +68,7 @@ Custom property | Description | Default
 `--paper-toolbar-background` | Toolbar background color     | `--default-primary-color`
 `--paper-toolbar-color`      | Toolbar foreground color     | `--text-primary-color`
 `--paper-toolbar`            | Mixin applied to the toolbar | `{}`
+`--toolbar-tools`            | Mixin applied to the toolbar-tools | `{}`
 
 ### Accessibility
 
@@ -114,6 +115,8 @@ be used as the label of the toolbar via `aria-labelledby`.
       height: 64px;
       padding: 0 16px;
       pointer-events: none;
+
+      @apply(--toolbar-tools);
     }
 
     /*
