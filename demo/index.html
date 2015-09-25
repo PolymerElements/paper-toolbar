@@ -20,9 +20,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
   <link rel="import" href="../paper-toolbar.html">
 
-  <style>
+  <style is="custom-style">
     paper-toolbar + paper-toolbar {
       margin-top: 20px;
+    }
+    paper-toolbar.red {
+      --paper-toolbar-background: red;
     }
   </style>
 
@@ -32,6 +35,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <paper-toolbar>
     <paper-icon-button icon="menu"></paper-icon-button>
     <span class="title">Toolbar</span>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
+  </paper-toolbar>
+  
+  <paper-toolbar class="red">
+    <paper-icon-button icon="menu"></paper-icon-button>
+    <span class="title">Toolbar: custom background color</span>
     <paper-icon-button icon="refresh"></paper-icon-button>
     <paper-icon-button icon="add">+</paper-icon-button>
   </paper-toolbar>
