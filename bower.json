@@ -4,9 +4,7 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "description": "A material design toolbar that is easily customizable",
   "private": true,
-  "main": [
-    "paper-toolbar.html"
-  ],
+  "main": "paper-toolbar.html",
   "authors": [
     "The Polymer Authors"
   ],
