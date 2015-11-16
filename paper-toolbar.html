@@ -8,7 +8,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-styles/default-theme.html">
+<link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <!--
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
@@ -122,6 +124,8 @@ be used as the label of the toolbar via `aria-labelledby`.
         height: var(--paper-toolbar-height, 64px);
         padding: 0 16px;
         pointer-events: none;
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
       }
 
       /*
@@ -230,6 +234,29 @@ be used as the label of the toolbar via `aria-labelledby`.
         left: 0;
         width: auto;
         margin: 0;
+      }
+
+      /* TODO(noms): Until we have a better solution for classes that don't use
+       * /deep/ create our own.
+       */
+      .start-justified {
+        @apply(--layout-start-justified);
+      }
+
+      .center-justified {
+        @apply(--layout-center-justified);
+      }
+
+      .end-justified {
+        @apply(--layout-end-justified);
+      }
+
+      .around-justified {
+        @apply(--layout-around-justified);
+      }
+
+      .justified {
+        @apply(--layout-justified);
       }
     </style>
 
@@ -357,24 +384,17 @@ be used as the label of the toolbar via `aria-labelledby`.
         },
 
         _computeBarClassName: function(barJustify) {
-          var classObj = {
-            'center': true,
-            'horizontal': true,
-            'layout': true,
-            'toolbar-tools': true
-          };
+          var className = 'toolbar-tools';
 
           // If a blank string or any falsy value is given, no other class name is
           // added.
           if (barJustify) {
-            var justifyClassName = (barJustify === 'justified') ?
+            className += ' ' + (barJustify === 'justified') ?
                 barJustify :
                 barJustify + '-justified';
-
-            classObj[justifyClassName] = true;
           }
 
-          return classNames(classObj);
+          return className;
         }
       });
     }());
