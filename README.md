@@ -78,6 +78,8 @@ Custom property | Description | Default
 `--paper-toolbar-height`     | Custom height for toolbar    | `64px`
 `--paper-toolbar-sm-height`  | Custom height for small screen toolbar | `56px`
 `--paper-toolbar`            | Mixin applied to the toolbar | `{}`
+`--paper-toolbar-medium`     | Mixin applied to medium height toolbar | `{}`
+`--paper-toolbar-tall`       | Mixin applied to tall height toolbar | `{}`
 
 ### Accessibility
 
