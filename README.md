@@ -20,7 +20,7 @@ _[Demo and API Docs](https://elements.polymer-project.org/elements/paper-toolbar
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
 
 `paper-toolbar` is a horizontal bar containing items that can be used for
-label, navigation, search and actions.  The items place inside the
+label, navigation, search and actions.  The items placed inside the
 `paper-toolbar` are projected into a `class="horizontal center layout"` container inside of
 `paper-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
 sizing.
