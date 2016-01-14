@@ -161,6 +161,10 @@ be used as the label of the toolbar via `aria-labelledby`.
         .toolbar-tools {
           height: var(--paper-toolbar-sm-height, 56px);
         }
+        
+        .toolbar-tools > ::content .title {
+          line-height: var(--paper-toolbar-sm-height, 56px);
+        }
       }
 
       #topBar {
@@ -208,7 +212,7 @@ be used as the label of the toolbar via `aria-labelledby`.
         text-overflow: ellipsis;
         font-size: 20px;
         font-weight: 400;
-        line-height: 1;
+        line-height: var(--paper-toolbar-height, 64px);
         pointer-events: none;
 
         @apply(--layout-flex);
