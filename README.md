@@ -86,8 +86,8 @@ The following custom properties and mixins are available for styling:
 | Custom property | Description | Default |
 | --- | --- | --- |
 | `--paper-toolbar-title` | Mixin applied to the title of the toolbar | `{}` |
-| `--paper-toolbar-background` | Toolbar background color | `--default-primary-color` |
-| `--paper-toolbar-color` | Toolbar foreground color | `--text-primary-color` |
+| `--paper-toolbar-background` | Toolbar background color | `--primary-color` |
+| `--paper-toolbar-color` | Toolbar foreground color | `--primary-text-color` |
 | `--paper-toolbar-height` | Custom height for toolbar | `64px` |
 | `--paper-toolbar-sm-height` | Custom height for small screen toolbar | `56px` |
 | `--paper-toolbar` | Mixin applied to the toolbar | `{}` |
