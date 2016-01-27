@@ -38,7 +38,7 @@ Example:
 ```
 
 `paper-toolbar` has a standard height, but can made be taller by setting `tall`
-class on the `paper-toolbar`.  This will make the toolbar 3x the normal height.
+class on the `paper-toolbar`. This will make the toolbar 3x the normal height.
 
 ```html
 <paper-toolbar class="tall">
@@ -79,6 +79,9 @@ with `bottom`.
 </paper-toolbar>
 ```
 
+When inside a `paper-header-panel` element, the class `.animate` is toggled to animate
+the height change in the toolbar.
+
 ### Styling
 
 The following custom properties and mixins are available for styling:
@@ -94,6 +97,7 @@ The following custom properties and mixins are available for styling:
 | `--paper-toolbar-content` | Mixin applied to the content section of the toolbar | `{}` |
 | `--paper-toolbar-medium` | Mixin applied to medium height toolbar | `{}` |
 | `--paper-toolbar-tall` | Mixin applied to tall height toolbar | `{}` |
+| `--paper-toolbar-transition` | Transition applied to the `.animate` class | `height 0.18s ease-in` |
 
 ### Accessibility
 
