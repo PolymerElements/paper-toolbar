@@ -199,6 +199,7 @@ be used as the label of the toolbar via `aria-labelledby`.
      * Work in progress.
      */
     .toolbar-tools > ::content > paper-icon-button:first-child,
+    .toolbar-tools > ::content > .menu {
       margin-right: 24px;
     }
 
@@ -209,8 +210,11 @@ be used as the label of the toolbar via `aria-labelledby`.
     }
 
     .toolbar-tools > ::content > paper-icon-button + .title,
+    .toolbar-tools > ::content > .menu + .title,
     .toolbar-tools > ::content[select=".middle"] paper-icon-button + .title,
-    .toolbar-tools > ::content[select=".bottom"] paper-icon-button + .title {
+    .toolbar-tools > ::content[select=".middle"] .menu + .title,
+    .toolbar-tools > ::content[select=".bottom"] paper-icon-button + .title,
+    .toolbar-tools > ::content[select=".bottom"] .menu + .title {
       margin-left: 0;
     }
 
