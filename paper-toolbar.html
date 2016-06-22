@@ -92,6 +92,9 @@ Custom property | Description | Default
 `--paper-toolbar-content`    | Mixin applied to the content section of the toolbar | `{}`
 `--paper-toolbar-medium`     | Mixin applied to medium height toolbar | `{}`
 `--paper-toolbar-tall`       | Mixin applied to tall height toolbar | `{}`
+`--paper-toolbar-top-bar`    | Mixin applied to #topbar region of toolbar | `{}`
+`--paper-toolbar-middle-bar` | Mixin applied to #middleBar region of toolbar | `{}`
+`--paper-toolbar-bottom-bar` | Mixin applied to #bottomBar region of toolbar | `{}`
 `--paper-toolbar-transition` | Transition applied to the `.animate` class | `height 0.18s ease-in`
 
 ### Accessibility
@@ -173,6 +176,7 @@ be used as the label of the toolbar via `aria-labelledby`.
 
       #topBar {
         position: relative;
+        @apply(--paper-toolbar-top-bar);
       }
 
       /* middle bar */
@@ -181,6 +185,7 @@ be used as the label of the toolbar via `aria-labelledby`.
         top: 0;
         right: 0;
         left: 0;
+        @apply(--paper-toolbar-middle-bar);
       }
 
       :host(.tall) #middleBar,
@@ -195,6 +200,7 @@ be used as the label of the toolbar via `aria-labelledby`.
         right: 0;
         bottom: 0;
         left: 0;
+        @apply(--paper-toolbar-bottom-bar);
       }
 
       /*
