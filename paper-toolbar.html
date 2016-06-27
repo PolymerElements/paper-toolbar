@@ -238,6 +238,10 @@ be used as the label of the toolbar via `aria-labelledby`.
         margin-left: 0;
       }
 
+      /**
+       * The --paper-toolbar-title mixin is applied here instead of above to
+       * fix the issue with margin-left being ignored due to css ordering.
+       */
       .toolbar-tools > ::content .title {
         @apply(--paper-toolbar-title);
       }
