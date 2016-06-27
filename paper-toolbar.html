@@ -218,10 +218,8 @@ be used as the label of the toolbar via `aria-labelledby`.
         font-weight: 400;
         line-height: 1;
         pointer-events: none;
-        margin-left: 56px;
 
         @apply(--layout-flex);
-        @apply(--paper-toolbar-title);
       }
 
       /**
@@ -232,10 +230,16 @@ be used as the label of the toolbar via `aria-labelledby`.
         margin-right: 24px;
       }
 
-      .toolbar-tools > ::content > paper-icon-button + .title,
-      .toolbar-tools > ::content[select=".middle"] paper-icon-button + .title,
-      .toolbar-tools > ::content[select=".bottom"] paper-icon-button + .title {
+      .toolbar-tools > ::content > .title {
+        margin-left: 56px;
+      }
+
+      .toolbar-tools > ::content > paper-icon-button + .title {
         margin-left: 0;
+      }
+
+      .toolbar-tools > ::content .title {
+        @apply(--paper-toolbar-title);
       }
 
       .toolbar-tools > ::content > .fit {
