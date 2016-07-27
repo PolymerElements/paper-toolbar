@@ -173,6 +173,7 @@ be used as the label of the toolbar via `aria-labelledby`.
 
       #topBar {
         position: relative;
+        z-index: 1;
       }
 
       /* middle bar */
@@ -218,7 +219,7 @@ be used as the label of the toolbar via `aria-labelledby`.
         font-weight: 400;
         line-height: 1;
         pointer-events: none;
-
+        @apply(--layout);
         @apply(--layout-flex);
       }
 
