@@ -223,10 +223,11 @@ be used as the label of the toolbar via `aria-labelledby`.
       }
 
       .toolbar-tools > ::content > .title {
-        margin-left: 56px;
+        margin-left: 64px;
       }
 
-      .toolbar-tools > ::content > paper-icon-button + .title {
+      .toolbar-tools > ::content > paper-icon-button + .title,
+      .toolbar-tools > ::content .menu + .title {
         margin-left: 0;
       }
 
@@ -238,7 +239,8 @@ be used as the label of the toolbar via `aria-labelledby`.
         @apply(--paper-toolbar-title);
       }
 
-      .toolbar-tools > ::content paper-icon-button[icon=menu] {
+      .toolbar-tools > ::content > paper-icon-button:first-child,
+      .toolbar-tools > ::content .menu {
         margin-right: 24px;
       }
 
