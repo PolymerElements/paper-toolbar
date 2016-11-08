@@ -90,7 +90,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('distributes nodes with "middle" class to middleBar', function() {
         var item = document.createElement('div');
-        item.classList.add('middle');
+        item.slot = 'middle';
         Polymer.dom(toolbar).appendChild(item);
         Polymer.dom.flush();
 
@@ -100,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('distributes nodes with "bottom" class to bottombar', function() {
         var item = document.createElement('div');
-        item.classList.add('bottom');
+        item.slot = 'bottom';
         Polymer.dom(toolbar).appendChild(item);
         Polymer.dom.flush();
 
