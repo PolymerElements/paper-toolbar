@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-styles/default-theme.html">
 <link rel="import" href="../paper-styles/typography.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <!--
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
@@ -74,8 +74,8 @@ with `bottom`.
 </paper-toolbar>
 ```
 
-When inside a `paper-header-panel` element with `mode="waterfall-tall"`, 
-the class `.animate` is toggled to animate the height change in the toolbar. 
+When inside a `paper-header-panel` element, the class `.animate` is toggled to animate
+the height change in the toolbar.
 
 ### Styling
 
@@ -144,8 +144,13 @@ be used as the label of the toolbar via `aria-labelledby`.
         height: var(--calculated-paper-toolbar-height);
         padding: 0 16px;
         pointer-events: none;
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
         @apply(--paper-toolbar-content);
       }
 
