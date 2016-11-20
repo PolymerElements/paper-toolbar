@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-styles/default-theme.html">
 <link rel="import" href="../paper-styles/typography.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <!--
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
@@ -74,8 +74,8 @@ with `bottom`.
 </paper-toolbar>
 ```
 
-When inside a `paper-header-panel` element with `mode="waterfall-tall"`, 
-the class `.animate` is toggled to animate the height change in the toolbar. 
+When inside a `paper-header-panel` element, the class `.animate` is toggled to animate
+the height change in the toolbar.
 
 ### Styling
 
@@ -144,8 +144,13 @@ be used as the label of the toolbar via `aria-labelledby`.
         height: var(--calculated-paper-toolbar-height);
         padding: 0 16px;
         pointer-events: none;
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
         @apply(--paper-toolbar-content);
       }
 
@@ -219,7 +224,11 @@ be used as the label of the toolbar via `aria-labelledby`.
         line-height: 1;
         pointer-events: none;
 
-        @apply(--layout-flex);
+        -ms-flex: 1 1 0.000000001px;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-flex-basis: 0.000000001px;
+        flex-basis: 0.000000001px;
       }
 
       .toolbar-tools > ::content > .title {
@@ -256,23 +265,33 @@ be used as the label of the toolbar via `aria-labelledby`.
        * /deep/ create our own.
        */
       .start-justified {
-        @apply(--layout-start-justified);
+        -ms-flex-pack: start;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
       }
 
       .center-justified {
-        @apply(--layout-center-justified);
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
       }
 
       .end-justified {
-        @apply(--layout-end-justified);
+        -ms-flex-pack: end;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
       }
 
       .around-justified {
-        @apply(--layout-around-justified);
+        -ms-flex-pack: distribute;
+        -webkit-justify-content: space-around;
+        justify-content: space-around;
       }
 
       .justified {
-        @apply(--layout-justified);
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
       }
     </style>
 
