@@ -14,6 +14,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <!--
+**This element has been deprecated in favor of [app-layout](https://github.com/PolymerElements/app-layout).**
+
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
 
 `paper-toolbar` is a horizontal bar containing items that can be used for
@@ -320,6 +322,10 @@ be used as the label of the toolbar via `aria-labelledby`.
 
       },
 
+      ready: function() {
+        console.warn(this.is, 'is deprecated. Please use app-layout instead!');
+      },
+
       attached: function() {
         this._observer = this._observe(this);
         this._updateAriaLabelledBy();
@@ -345,7 +351,10 @@ be used as the label of the toolbar via `aria-labelledby`.
       _updateAriaLabelledBy: function() {
         Polymer.dom.flush();
         var labelledBy = [];
-        var contents = Polymer.dom(this.root).querySelectorAll('slot');
+        var contents = Array.prototype.slice
+            .call(Polymer.dom(this.root).querySelectorAll('slot'))
+            .concat(Array.prototype.slice.call(Polymer.dom(this.root).querySelectorAll('content')));
+
         for (var content, index = 0; content = contents[index]; index++) {
           var nodes = Polymer.dom(content).getDistributedNodes();
           for (var node, jndex = 0; node = nodes[jndex]; jndex++) {

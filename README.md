@@ -19,6 +19,8 @@ _[Demo and API docs](https://elements.polymer-project.org/elements/paper-toolbar
 
 ##&lt;paper-toolbar&gt;
 
+**This element has been deprecated in favor of [app-layout](https://github.com/PolymerElements/app-layout).**
+
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
 
 `paper-toolbar` is a horizontal bar containing items that can be used for
