@@ -89,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('distributes nodes with "middle" slot to middleBar', function() {
         var item = document.createElement('div');
-        item.slot = 'middle';
+        item.setAttribute('slot', 'middle');
         Polymer.dom(toolbar).appendChild(item);
         Polymer.dom.flush();
         var insertionPoint = Polymer.dom(item).getDestinationInsertionPoints()[0];
@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('distributes nodes with "bottom" slot to bottomBar', function() {
         var item = document.createElement('div');
-        item.slot = 'bottom';
+        item.setAttribute('slot', 'bottom');
         Polymer.dom(toolbar).appendChild(item);
         Polymer.dom.flush();
         var insertionPoint = Polymer.dom(item).getDestinationInsertionPoints()[0];
