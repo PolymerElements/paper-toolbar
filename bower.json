@@ -54,28 +54,6 @@
   },
   "ignore": [],
   "resolutions": {
-    "webcomponentsjs": "v1",
-    "iron-flex-layout": "2.0-preview",
-    "hydrolysis": "hydrolysis-1.x",
-    "iron-ajax": "2.0-preview",
-    "iron-doc-viewer": "2.0-preview",
-    "marked-element": "2.0-preview",
-    "paper-button": "2.0-preview",
-    "paper-ripple": "2.0-preview",
-    "iron-a11y-keys-behavior": "2.0-preview",
-    "paper-behaviors": "2.0-preview",
-    "iron-behaviors": "2.0-preview",
-    "iron-checked-element-behavior": "2.0-preview",
-    "iron-validatable-behavior": "2.0-preview",
-    "iron-meta": "2.0-preview",
-    "polymer": "2.0-preview",
-    "prism-element": "2.0-preview",
-    "iron-icons": "2.0-preview",
-    "iron-icon": "2.0-preview",
-    "iron-iconset-svg": "2.0-preview",
-    "iron-selector": "2.0-preview",
-    "paper-styles": "2.0-preview",
-    "iron-range-behavior": "2.0-preview",
-    "test-fixture": "^2.0.0"
+    "test-fixture": "^3.0.0-rc.1"
   }
 }
