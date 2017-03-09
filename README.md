@@ -33,9 +33,9 @@ Example:
 
 ```html
 <paper-toolbar>
-  <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
-  <div class="title">Title</div>
-  <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
+  <paper-icon-button slot="top" icon="menu" on-tap="menuAction"></paper-icon-button>
+  <div slot="top" class="title">Title</div>
+  <paper-icon-button slot="top" icon="more-vert" on-tap="moreAction"></paper-icon-button>
 </paper-toolbar>
 ```
 
@@ -44,7 +44,7 @@ class on the `paper-toolbar`. This will make the toolbar 3x the normal height.
 
 ```html
 <paper-toolbar class="tall">
-  <paper-icon-button icon="menu"></paper-icon-button>
+  <paper-icon-button slot="top" icon="menu"></paper-icon-button>
 </paper-toolbar>
 ```
 
@@ -53,7 +53,7 @@ toolbar 2x the normal height.
 
 ```html
 <paper-toolbar class="medium-tall">
-  <paper-icon-button icon="menu"></paper-icon-button>
+  <paper-icon-button slot="top" icon="menu"></paper-icon-button>
 </paper-toolbar>
 ```
 
@@ -62,7 +62,7 @@ When `tall`, items can pin to either the top (default), middle or bottom. Use
 
 ```html
 <paper-toolbar class="tall">
-  <paper-icon-button icon="menu"></paper-icon-button>
+  <paper-icon-button slot="top" icon="menu"></paper-icon-button>
   <div slot="middle" class="title">Middle Title</div>
   <div slot="bottom" class="title">Bottom Title</div>
 </paper-toolbar>
@@ -106,5 +106,6 @@ Custom property | Description | Default
 `<paper-toolbar>` has `role="toolbar"` by default. Any elements with the class `title` will
 be used as the label of the toolbar via `aria-labelledby`.
 
+### Breaking change in 2.0
 
-
+* In Polymer 1.x, default content used to be distribuited automatically to the top toolbar. In v2, the you must set `slot="top"` on the default content to distribuite the content to the top toolbar.

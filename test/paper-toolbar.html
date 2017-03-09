@@ -34,7 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <test-fixture id="title">
     <template>
       <paper-toolbar>
-        <span class="title">Title</span>
+        <span class="title" slot="top">Title</span>
       </paper-toolbar>
     </template>
   </test-fixture>
@@ -42,7 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <test-fixture id="title-with-id">
     <template>
       <paper-toolbar>
-        <span class="title" id="title">Title</span>
+        <span class="title" id="title" slot="top">Title</span>
       </paper-toolbar>
     </template>
   </test-fixture>
@@ -50,8 +50,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <test-fixture id="multiple-titles">
     <template>
       <paper-toolbar>
-        <span class="title">Title 1</span>
-        <span class="title">Title 2</span>
+        <span class="title" slot="top">Title 1</span>
+        <span class="title" slot="top">Title 2</span>
       </paper-toolbar>
     </template>
   </test-fixture>
@@ -81,6 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('distributes nodes to topBar by default', function() {
         var item = document.createElement('div');
+        item.setAttribute('slot', 'top');
         Polymer.dom(toolbar).appendChild(item);
         Polymer.dom.flush();
         var insertionPoint = Polymer.dom(item).getDestinationInsertionPoints()[0];

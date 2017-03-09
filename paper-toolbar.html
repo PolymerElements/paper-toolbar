@@ -76,8 +76,8 @@ with `bottom`.
 </paper-toolbar>
 ```
 
-When inside a `paper-header-panel` element with `mode="waterfall-tall"`, 
-the class `.animate` is toggled to animate the height change in the toolbar. 
+When inside a `paper-header-panel` element with `mode="waterfall-tall"`,
+the class `.animate` is toggled to animate the height change in the toolbar.
 
 ### Styling
 
@@ -100,6 +100,12 @@ Custom property | Description | Default
 
 `<paper-toolbar>` has `role="toolbar"` by default. Any elements with the class `title` will
 be used as the label of the toolbar via `aria-labelledby`.
+
+### Breaking change in 2.0
+
+* In Polymer 1.x, default content used to be distribuited automatically to the top toolbar.
+In v2, the you must set `slot="top"` on the default content to distribuite the content to
+the top toolbar.
 
 @demo demo/index.html
 -->
@@ -270,7 +276,7 @@ be used as the label of the toolbar via `aria-labelledby`.
     </style>
 
     <div id="topBar" class$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
-      <slot></slot>
+      <slot name="top"></slot>
     </div>
 
     <div id="middleBar" class$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
