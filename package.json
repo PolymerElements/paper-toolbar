@@ -1,0 +1,27 @@
+{
+  "name": "@polymer/paper-toolbar",
+  "flat": true,
+  "version": "3.0.0-pre.1",
+  "description": "A material design toolbar that is easily customizable",
+  "contributors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "toolbar",
+    "layout"
+  ],
+  "main": "paper-toolbar.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-toolbar.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "@polymer/iron-flex-layout": "^3.0.0-pre.1",
+    "@polymer/paper-styles": "^3.0.0-pre.1",
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
