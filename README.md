@@ -13,6 +13,7 @@ thing! https://github.com/PolymerLabs/tedium/issues
 -->
 
 [![Build status](https://travis-ci.org/PolymerElements/paper-toolbar.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-toolbar)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-toolbar)
 
 _[Demo and API docs](https://elements.polymer-project.org/elements/paper-toolbar)_
 
