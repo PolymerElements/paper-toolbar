@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/paper-toolbar",
+  "private": true,
+  "description": "A material design toolbar that is easily customizable",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-toolbar.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
