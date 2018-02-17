@@ -108,7 +108,6 @@
  * the top toolbar.
  */
 interface PaperToolbarElement extends Polymer.Element {
-  hostAttributes: object|null;
 
   /**
    * Controls how the items are aligned horizontally when they are placed
@@ -129,11 +128,12 @@ interface PaperToolbarElement extends Polymer.Element {
    * Options are `start`, `center`, `end`, `justified` and `around`.
    */
   middleJustify: string|null|undefined;
-  ready(): any;
-  attached(): any;
-  detached(): any;
+  hostAttributes: object|null;
+  ready(): void;
+  attached(): void;
+  detached(): void;
   _observe(node: any): any;
-  _updateAriaLabelledBy(): any;
+  _updateAriaLabelledBy(): void;
   _computeBarExtraClasses(barJustify: any): any;
 }
 
