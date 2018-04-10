@@ -292,9 +292,7 @@ the top toolbar.
     Polymer({
       is: 'paper-toolbar',
 
-      hostAttributes: {
-        'role': 'toolbar'
-      },
+      hostAttributes: {'role': 'toolbar'},
 
       properties: {
         /**
@@ -302,29 +300,20 @@ the top toolbar.
          * at the bottom.
          * Options are `start`, `center`, `end`, `justified` and `around`.
          */
-        bottomJustify: {
-          type: String,
-          value: ''
-        },
+        bottomJustify: {type: String, value: ''},
 
         /**
          * Controls how the items are aligned horizontally.
          * Options are `start`, `center`, `end`, `justified` and `around`.
          */
-        justify: {
-          type: String,
-          value: ''
-        },
+        justify: {type: String, value: ''},
 
         /**
          * Controls how the items are aligned horizontally when they are placed
          * in the middle.
          * Options are `start`, `center`, `end`, `justified` and `around`.
          */
-        middleJustify: {
-          type: String,
-          value: ''
-        }
+        middleJustify: {type: String, value: ''}
 
       },
 
@@ -347,10 +336,7 @@ the top toolbar.
         var observer = new MutationObserver(function() {
           this._updateAriaLabelledBy();
         }.bind(this));
-        observer.observe(node, {
-          childList: true,
-          subtree: true
-        });
+        observer.observe(node, {childList: true, subtree: true});
         return observer;
       },
 
@@ -358,8 +344,9 @@ the top toolbar.
         Polymer.dom.flush();
         var labelledBy = [];
         var contents = Array.prototype.slice
-            .call(Polymer.dom(this.root).querySelectorAll('slot'))
-            .concat(Array.prototype.slice.call(Polymer.dom(this.root).querySelectorAll('content')));
+                           .call(Polymer.dom(this.root).querySelectorAll('slot'))
+                           .concat(Array.prototype.slice.call(
+                               Polymer.dom(this.root).querySelectorAll('content')));
 
         for (var content, index = 0; content = contents[index]; index++) {
           var nodes = Polymer.dom(content).getDistributedNodes();
@@ -381,7 +368,8 @@ the top toolbar.
       },
 
       _computeBarExtraClasses: function(barJustify) {
-        if (!barJustify) return '';
+        if (!barJustify)
+          return '';
         return barJustify + (barJustify === 'justified' ? '' : '-justified');
       }
     });
