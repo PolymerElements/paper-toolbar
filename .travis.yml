@@ -27,9 +27,6 @@ script:
     if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then polymer test -s 'default';
     fi
 dist: trusty
-install:
-  - npm install -g polymer-cli
-  - polymer install --variants
 cache:
   directories:
     - node_modules
