@@ -1,4 +1,4 @@
-<!--
+/**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -6,14 +6,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-styles/default-theme.html">
-<link rel="import" href="../paper-styles/typography.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-
-<!--
+*/
+/**
 **This element has been deprecated in favor of [app-layout](https://github.com/PolymerElements/app-layout).**
 
 Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
@@ -108,10 +102,22 @@ In v2, the you must set `slot="top"` on the default content to distribuite the c
 the top toolbar.
 
 @demo demo/index.html
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="paper-toolbar">
-  <template>
+import '@polymer/paper-styles/default-theme.js';
+import '@polymer/paper-styles/typography.js';
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { flush, dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+Polymer({
+  _template: html`
     <style>
       :host {
         --calculated-paper-toolbar-height: var(--paper-toolbar-height, 64px);
@@ -201,7 +207,7 @@ the top toolbar.
       /*
        * make elements (e.g. buttons) respond to mouse/touch events
        *
-       * `.toolbar-tools` disables touch events so multiple toolbars can stack and not
+       * \`.toolbar-tools\` disables touch events so multiple toolbars can stack and not
        * absorb events. All children must have pointer events re-enabled to work as
        * expected.
        */
@@ -275,103 +281,98 @@ the top toolbar.
       }
     </style>
 
-    <div id="topBar" class$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
+    <div id="topBar" class\$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
       <slot name="top"></slot>
     </div>
 
-    <div id="middleBar" class$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
+    <div id="middleBar" class\$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
       <slot name="middle"></slot>
     </div>
 
-    <div id="bottomBar" class$="toolbar-tools [[_computeBarExtraClasses(bottomJustify)]]">
+    <div id="bottomBar" class\$="toolbar-tools [[_computeBarExtraClasses(bottomJustify)]]">
       <slot name="bottom"></slot>
     </div>
-  </template>
+`,
 
-  <script>
-    Polymer({
-      is: 'paper-toolbar',
+  is: 'paper-toolbar',
+  hostAttributes: {'role': 'toolbar'},
 
-      hostAttributes: {'role': 'toolbar'},
+  properties: {
+    /**
+     * Controls how the items are aligned horizontally when they are placed
+     * at the bottom.
+     * Options are `start`, `center`, `end`, `justified` and `around`.
+     */
+    bottomJustify: {type: String, value: ''},
 
-      properties: {
-        /**
-         * Controls how the items are aligned horizontally when they are placed
-         * at the bottom.
-         * Options are `start`, `center`, `end`, `justified` and `around`.
-         */
-        bottomJustify: {type: String, value: ''},
+    /**
+     * Controls how the items are aligned horizontally.
+     * Options are `start`, `center`, `end`, `justified` and `around`.
+     */
+    justify: {type: String, value: ''},
 
-        /**
-         * Controls how the items are aligned horizontally.
-         * Options are `start`, `center`, `end`, `justified` and `around`.
-         */
-        justify: {type: String, value: ''},
+    /**
+     * Controls how the items are aligned horizontally when they are placed
+     * in the middle.
+     * Options are `start`, `center`, `end`, `justified` and `around`.
+     */
+    middleJustify: {type: String, value: ''}
 
-        /**
-         * Controls how the items are aligned horizontally when they are placed
-         * in the middle.
-         * Options are `start`, `center`, `end`, `justified` and `around`.
-         */
-        middleJustify: {type: String, value: ''}
+  },
 
-      },
+  ready: function() {
+    console.warn(this.is, 'is deprecated. Please use app-layout instead!');
+  },
 
-      ready: function() {
-        console.warn(this.is, 'is deprecated. Please use app-layout instead!');
-      },
+  attached: function() {
+    this._observer = this._observe(this);
+    this._updateAriaLabelledBy();
+  },
 
-      attached: function() {
-        this._observer = this._observe(this);
-        this._updateAriaLabelledBy();
-      },
+  detached: function() {
+    if (this._observer) {
+      this._observer.disconnect();
+    }
+  },
 
-      detached: function() {
-        if (this._observer) {
-          this._observer.disconnect();
-        }
-      },
+  _observe: function(node) {
+    var observer = new MutationObserver(function() {
+      this._updateAriaLabelledBy();
+    }.bind(this));
+    observer.observe(node, {childList: true, subtree: true});
+    return observer;
+  },
 
-      _observe: function(node) {
-        var observer = new MutationObserver(function() {
-          this._updateAriaLabelledBy();
-        }.bind(this));
-        observer.observe(node, {childList: true, subtree: true});
-        return observer;
-      },
+  _updateAriaLabelledBy: function() {
+    flush();
+    var labelledBy = [];
+    var contents = Array.prototype.slice
+                       .call(dom(this.root).querySelectorAll('slot'))
+                       .concat(Array.prototype.slice.call(
+                           dom(this.root).querySelectorAll('content')));
 
-      _updateAriaLabelledBy: function() {
-        Polymer.dom.flush();
-        var labelledBy = [];
-        var contents = Array.prototype.slice
-                           .call(Polymer.dom(this.root).querySelectorAll('slot'))
-                           .concat(Array.prototype.slice.call(
-                               Polymer.dom(this.root).querySelectorAll('content')));
-
-        for (var content, index = 0; content = contents[index]; index++) {
-          var nodes = Polymer.dom(content).getDistributedNodes();
-          for (var node, jndex = 0; node = nodes[jndex]; jndex++) {
-            if (node.classList && node.classList.contains('title')) {
-              if (node.id) {
-                labelledBy.push(node.id);
-              } else {
-                var id = 'paper-toolbar-label-' + Math.floor(Math.random() * 10000);
-                node.id = id;
-                labelledBy.push(id);
-              }
-            }
+    for (var content, index = 0; content = contents[index]; index++) {
+      var nodes = dom(content).getDistributedNodes();
+      for (var node, jndex = 0; node = nodes[jndex]; jndex++) {
+        if (node.classList && node.classList.contains('title')) {
+          if (node.id) {
+            labelledBy.push(node.id);
+          } else {
+            var id = 'paper-toolbar-label-' + Math.floor(Math.random() * 10000);
+            node.id = id;
+            labelledBy.push(id);
           }
         }
-        if (labelledBy.length > 0) {
-          this.setAttribute('aria-labelledby', labelledBy.join(' '));
-        }
-      },
-
-      _computeBarExtraClasses: function(barJustify) {
-        if (!barJustify)
-          return '';
-        return barJustify + (barJustify === 'justified' ? '' : '-justified');
       }
-    });
-  </script>
-</dom-module>
+    }
+    if (labelledBy.length > 0) {
+      this.setAttribute('aria-labelledby', labelledBy.join(' '));
+    }
+  },
+
+  _computeBarExtraClasses: function(barJustify) {
+    if (!barJustify)
+      return '';
+    return barJustify + (barJustify === 'justified' ? '' : '-justified');
+  }
+});

@@ -15,18 +15,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <title>paper-toolbar demo</title>
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
-  <link rel="import" href="../../iron-icons/iron-icons.html">
-  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="../../paper-progress/paper-progress.html">
-  <link rel="import" href="../../paper-styles/default-theme.html">
-  <link rel="import" href="../paper-toolbar.html">
+  <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../../iron-flex-layout/iron-flex-layout.js"></script>
+  <script type="module" src="../../iron-icons/iron-icons.js"></script>
+  <script type="module" src="../../paper-icon-button/paper-icon-button.js"></script>
+  <script type="module" src="../../paper-progress/paper-progress.js"></script>
+  <script type="module" src="../../paper-styles/default-theme.js"></script>
+  <script type="module" src="../paper-toolbar.js"></script>
 
-  <custom-style>
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
       .centered {
         min-width: calc(100% - 200px);
@@ -40,11 +51,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply --layout-flex;
       }
     </style>
-  </custom-style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 
 </head>
 <body unresolved>
-  <div class="vertical-section-container centered">
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
     <h3>
       A plain <code>paper-toolbar</code>. Use <code>class="title"</code> to
       indicate the toolbar's title.
@@ -97,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <demo-snippet>
       <template>
         <paper-toolbar class="tall">
-          <paper-icon-button  slot="top" icon="menu"></paper-icon-button>
+          <paper-icon-button slot="top" icon="menu"></paper-icon-button>
           <span slot="top" class="title">Title</span>
           <paper-icon-button slot="top" icon="refresh"></paper-icon-button>
           <paper-icon-button slot="top" icon="add">+</paper-icon-button>
@@ -177,7 +194,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </demo-snippet>
 
-  </div>
+  </div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 
 </body>
 </html>
