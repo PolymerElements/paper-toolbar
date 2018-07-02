@@ -1,39 +1,43 @@
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+This code may only be used under the BSD style license found at
+http://polymer.github.io/LICENSE.txt The complete set of authors may be found at
+http://polymer.github.io/AUTHORS.txt The complete set of contributors may be
+found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
+part of the polymer project is also subject to an additional IP rights grant
+found at http://polymer.github.io/PATENTS.txt
 */
 import '@polymer/polymer/polymer-legacy.js';
-
 import '@polymer/paper-styles/default-theme.js';
 import '@polymer/paper-styles/typography.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-import { flush, dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+
+import {Polymer} from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import {dom, flush} from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
 /**
-**This element has been deprecated in favor of [app-layout](https://github.com/PolymerElements/app-layout).**
+**This element has been deprecated in favor of
+[app-layout](https://github.com/PolymerElements/app-layout).**
 
-Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
+Material design:
+[Toolbars](https://www.google.com/design/spec/components/toolbars.html)
 
 `paper-toolbar` is a horizontal bar containing items that can be used for
 label, navigation, search and actions.  The items placed inside the
-`paper-toolbar` are projected into a `class="horizontal center layout"` container inside of
-`paper-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
-sizing.
+`paper-toolbar` are projected into a `class="horizontal center layout"`
+container inside of `paper-toolbar`'s Shadow DOM.  You can use flex attributes
+to control the items' sizing.
 
 Example:
 
 ```html
 <paper-toolbar>
-  <paper-icon-button slot="top" icon="menu" on-tap="menuAction"></paper-icon-button>
-  <div slot="top" class="title">Title</div>
-  <paper-icon-button slot="top" icon="more-vert" on-tap="moreAction"></paper-icon-button>
+  <paper-icon-button slot="top" icon="menu"
+on-tap="menuAction"></paper-icon-button> <div slot="top"
+class="title">Title</div> <paper-icon-button slot="top" icon="more-vert"
+on-tap="moreAction"></paper-icon-button>
 </paper-toolbar>
 ```
 
@@ -90,25 +94,28 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--paper-toolbar-title`      | Mixin applied to the title of the toolbar | `{}`
 `--paper-toolbar-background` | Toolbar background color     | `--primary-color`
-`--paper-toolbar-color`      | Toolbar foreground color     | `--dark-theme-text-color`
+`--paper-toolbar-color`      | Toolbar foreground color     |
+`--dark-theme-text-color`
 `--paper-toolbar-height`     | Custom height for toolbar    | `64px`
 `--paper-toolbar-sm-height`  | Custom height for small screen toolbar | `56px`
 `--paper-toolbar`            | Mixin applied to the toolbar | `{}`
-`--paper-toolbar-content`    | Mixin applied to the content section of the toolbar | `{}`
+`--paper-toolbar-content`    | Mixin applied to the content section of the
+toolbar | `{}`
 `--paper-toolbar-medium`     | Mixin applied to medium height toolbar | `{}`
 `--paper-toolbar-tall`       | Mixin applied to tall height toolbar | `{}`
-`--paper-toolbar-transition` | Transition applied to the `.animate` class | `height 0.18s ease-in`
+`--paper-toolbar-transition` | Transition applied to the `.animate` class |
+`height 0.18s ease-in`
 
 ### Accessibility
 
-`<paper-toolbar>` has `role="toolbar"` by default. Any elements with the class `title` will
-be used as the label of the toolbar via `aria-labelledby`.
+`<paper-toolbar>` has `role="toolbar"` by default. Any elements with the class
+`title` will be used as the label of the toolbar via `aria-labelledby`.
 
 ### Breaking change in 2.0
 
-* In Polymer 1.x, default content used to be distribuited automatically to the top toolbar.
-In v2, the you must set `slot="top"` on the default content to distribuite the content to
-the top toolbar.
+* In Polymer 1.x, default content used to be distribuited automatically to the
+top toolbar. In v2, the you must set `slot="top"` on the default content to
+distribuite the content to the top toolbar.
 
 @demo demo/index.html
 */
@@ -342,10 +349,10 @@ Polymer({
   _updateAriaLabelledBy: function() {
     flush();
     var labelledBy = [];
-    var contents = Array.prototype.slice
-                       .call(dom(this.root).querySelectorAll('slot'))
-                       .concat(Array.prototype.slice.call(
-                           dom(this.root).querySelectorAll('content')));
+    var contents =
+        Array.prototype.slice.call(dom(this.root).querySelectorAll('slot'))
+            .concat(Array.prototype.slice.call(
+                dom(this.root).querySelectorAll('content')));
 
     for (var content, index = 0; content = contents[index]; index++) {
       var nodes = dom(content).getDistributedNodes();
