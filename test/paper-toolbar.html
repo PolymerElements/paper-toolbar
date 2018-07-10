@@ -14,14 +14,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <title>paper-toolbar basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-  <script src="../../../wct-browser-legacy/browser.js"></script>
-  <script src="../../test-fixture/test-fixture-mocha.js"></script>
-
-  <script type="module" src="../../test-fixture/test-fixture.js"></script>
-  <script type="module" src="../../polymer/polymer-legacy.js"></script>
-  <script type="module" src="../paper-toolbar.js"></script>
-
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+  <script src="../node_modules/@polymer/test-fixture/test-fixture-mocha.js"></script>
 </head>
 <body>
 
@@ -57,106 +52,101 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </test-fixture>
 
   <script type="module">
-import '@polymer/test-fixture/test-fixture.js';
-import '@polymer/polymer/polymer-legacy.js';
-import '../paper-toolbar.js';
-import { dom, flush as flush$0 } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+    import '@polymer/polymer/polymer-legacy.js';
+    import '../paper-toolbar.js';
+    import {dom, flush as flush$0} from '@polymer/polymer/lib/legacy/polymer.dom.js';
 
-suite('basic', function() {
-  var toolbar;
+    suite('basic', function() {
+      var toolbar;
 
-  setup(function() {
-    toolbar = fixture('basic');
-  });
+      setup(function() {
+        toolbar = fixture('basic');
+      });
 
-  test('has expected medium-tall height', function() {
-    var old = toolbar.offsetHeight;
-    toolbar.classList.add('medium-tall');
-    expect(toolbar.offsetHeight).to.be.eql(old * 2);
-  });
+      test('has expected medium-tall height', function() {
+        var old = toolbar.offsetHeight;
+        toolbar.classList.add('medium-tall');
+        expect(toolbar.offsetHeight).to.be.eql(old * 2);
+      });
 
-  test('has expected tall height', function() {
-    var old = toolbar.offsetHeight;
-    toolbar.classList.add('tall');
-    expect(toolbar.offsetHeight).to.be.eql(old * 3);
-  });
+      test('has expected tall height', function() {
+        var old = toolbar.offsetHeight;
+        toolbar.classList.add('tall');
+        expect(toolbar.offsetHeight).to.be.eql(old * 3);
+      });
 
-  test('distributes nodes to topBar by default', function() {
-    var item = document.createElement('div');
-    item.setAttribute('slot', 'top');
-    dom(toolbar).appendChild(item);
-    flush$0();
-    var insertionPoint = dom(item).getDestinationInsertionPoints()[0];
-    expect(dom(insertionPoint).parentNode).to.be.eql(toolbar.$.topBar);
-  });
+      test('distributes nodes to topBar by default', function() {
+        var item = document.createElement('div');
+        item.setAttribute('slot', 'top');
+        dom(toolbar).appendChild(item);
+        flush$0();
+        var insertionPoint = dom(item).getDestinationInsertionPoints()[0];
+        expect(dom(insertionPoint).parentNode).to.be.eql(toolbar.$.topBar);
+      });
 
-  test('distributes nodes with "middle" slot to middleBar', function() {
-    var item = document.createElement('div');
-    item.setAttribute('slot', 'middle');
-    dom(toolbar).appendChild(item);
-    flush$0();
-    var insertionPoint = dom(item).getDestinationInsertionPoints()[0];
-    expect(dom(insertionPoint).parentNode)
-        .to.be.eql(toolbar.$.middleBar);
-  });
+      test('distributes nodes with "middle" slot to middleBar', function() {
+        var item = document.createElement('div');
+        item.setAttribute('slot', 'middle');
+        dom(toolbar).appendChild(item);
+        flush$0();
+        var insertionPoint = dom(item).getDestinationInsertionPoints()[0];
+        expect(dom(insertionPoint).parentNode).to.be.eql(toolbar.$.middleBar);
+      });
 
-  test('distributes nodes with "bottom" slot to bottomBar', function() {
-    var item = document.createElement('div');
-    item.setAttribute('slot', 'bottom');
-    dom(toolbar).appendChild(item);
-    flush$0();
-    var insertionPoint = dom(item).getDestinationInsertionPoints()[0];
-    expect(dom(insertionPoint).parentNode)
-        .to.be.eql(toolbar.$.bottomBar);
-  });
-});
-
-suite('a11y', function() {
-  test('has role="toolbar"', function() {
-    var toolbar = fixture('basic');
-    flush$0();
-    assert.equal(toolbar.getAttribute('role'), 'toolbar', 'has role="toolbar"');
-  });
-
-  test('children with .title becomes the label', function(done) {
-    var toolbar = fixture('title');
-    flush(function() {
-      assert.isTrue(
-          toolbar.hasAttribute('aria-labelledby'), 'has aria-labelledby');
-      assert.equal(
-          toolbar.getAttribute('aria-labelledby'),
-          dom(toolbar).querySelector('.title').id,
-          'aria-labelledby has the id of the .title element');
-      done();
+      test('distributes nodes with "bottom" slot to bottomBar', function() {
+        var item = document.createElement('div');
+        item.setAttribute('slot', 'bottom');
+        dom(toolbar).appendChild(item);
+        flush$0();
+        var insertionPoint = dom(item).getDestinationInsertionPoints()[0];
+        expect(dom(insertionPoint).parentNode).to.be.eql(toolbar.$.bottomBar);
+      });
     });
-  });
 
-  test('existing ids on titles are preserved', function() {
-    var toolbar = fixture('title-with-id');
-    assert.isTrue(
-        toolbar.hasAttribute('aria-labelledby'), 'has aria-labelledby');
-    assert.equal(
-        dom(toolbar).querySelector('.title').id,
-        'title',
-        'id is preserved');
-  });
+    suite('a11y', function() {
+      test('has role="toolbar"', function() {
+        var toolbar = fixture('basic');
+        flush$0();
+        assert.equal(toolbar.getAttribute('role'), 'toolbar', 'has role="toolbar"');
+      });
 
-  test('multiple children with .title becomes the label', function() {
-    var toolbar = fixture('multiple-titles');
-    assert.isTrue(
-        toolbar.hasAttribute('aria-labelledby'), 'has aria-labelledby');
-    var ids = [];
-    var titles = dom(toolbar).querySelectorAll('.title');
-    for (var title, index = 0; title = titles[index]; index++) {
-      ids.push(title.id);
-    }
-    assert.equal(
-        toolbar.getAttribute('aria-labelledby'),
-        ids.join(' '),
-        'aria-labelledby has the id of all .title elements');
-  });
-});
-</script>
+      test('children with .title becomes the label', function(done) {
+        var toolbar = fixture('title');
+        flush(function() {
+          assert.isTrue(
+              toolbar.hasAttribute('aria-labelledby'), 'has aria-labelledby');
+          assert.equal(
+              toolbar.getAttribute('aria-labelledby'),
+              dom(toolbar).querySelector('.title').id,
+              'aria-labelledby has the id of the .title element');
+          done();
+        });
+      });
+
+      test('existing ids on titles are preserved', function() {
+        var toolbar = fixture('title-with-id');
+        assert.isTrue(
+            toolbar.hasAttribute('aria-labelledby'), 'has aria-labelledby');
+        assert.equal(
+            dom(toolbar).querySelector('.title').id, 'title', 'id is preserved');
+      });
+
+      test('multiple children with .title becomes the label', function() {
+        var toolbar = fixture('multiple-titles');
+        assert.isTrue(
+            toolbar.hasAttribute('aria-labelledby'), 'has aria-labelledby');
+        var ids = [];
+        var titles = dom(toolbar).querySelectorAll('.title');
+        for (var title, index = 0; title = titles[index]; index++) {
+          ids.push(title.id);
+        }
+        assert.equal(
+            toolbar.getAttribute('aria-labelledby'),
+            ids.join(' '),
+            'aria-labelledby has the id of all .title elements');
+      });
+    });
+  </script>
 
 </body>
 </html>
