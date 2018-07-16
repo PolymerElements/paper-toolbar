@@ -1,28 +1,10 @@
-
-<!---
-
-This README is automatically generated from the comments in these files:
-paper-toolbar.html
-
-Edit those files, and our readme bot will duplicate them over here!
-Edit this file, and the bot will squash your changes :)
-
-The bot does some handling of markdown. Please file a bug if it does the wrong
-thing! https://github.com/PolymerLabs/tedium/issues
-
--->
-
+[![Published on NPM](https://img.shields.io/npm/v/@polymer/paper-toolbar.svg)](https://www.npmjs.com/package/@polymer/paper-toolbar)
 [![Build status](https://travis-ci.org/PolymerElements/paper-toolbar.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-toolbar)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-toolbar)
-
-_[Demo and API docs](https://elements.polymer-project.org/elements/paper-toolbar)_
-
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://webcomponents.org/element/@polymer/paper-toolbar)
 
 ## &lt;paper-toolbar&gt;
 
 **This element has been deprecated in favor of [app-layout](https://github.com/PolymerElements/app-layout).**
-
-Material design: [Toolbars](https://www.google.com/design/spec/components/toolbars.html)
 
 `paper-toolbar` is a horizontal bar containing items that can be used for
 label, navigation, search and actions.  The items placed inside the
@@ -107,6 +89,67 @@ Custom property | Description | Default
 `<paper-toolbar>` has `role="toolbar"` by default. Any elements with the class `title` will
 be used as the label of the toolbar via `aria-labelledby`.
 
-### Breaking change in 2.0
+See: [Documentation](https://www.webcomponents.org/element/@polymer/paper-toolbar),
+  [Demo](https://www.webcomponents.org/element/@polymer/paper-toolbar/demo/demo/index.html).
 
-* In Polymer 1.x, default content used to be distribuited automatically to the top toolbar. In v2, the you must set `slot="top"` on the default content to distribuite the content to the top toolbar.
+## Usage
+
+### Installation
+```
+npm install --save @polymer/paper-toolbar
+```
+
+### In an html file
+```html
+<html>
+  <head>
+    <script type="module">
+      import '@polymer/paper-toolbar/paper-toolbar.js';
+    </script>
+  </head>
+  <body>
+    <paper-toolbar>
+      <div slot="top" class="title">Title</div>
+    </paper-toolbar>
+  </body>
+</html>
+```
+### In a Polymer 3 element
+```js
+import {PolymerElement, html} from '@polymer/polymer';
+import '@polymer/paper-toolbar/paper-toolbar.js';
+
+class SampleElement extends PolymerElement {
+  static get template() {
+    return html`
+      <paper-toolbar>
+        <div slot="top" class="title">Title</div>
+      </paper-toolbar>
+    `;
+  }
+}
+customElements.define('sample-element', SampleElement);
+```
+
+## Contributing
+If you want to send a PR to this element, here are
+the instructions for running the tests and demo locally:
+
+### Installation
+```sh
+git clone https://github.com/PolymerElements/paper-toolbar
+cd paper-toolbar
+npm install
+npm install -g polymer-cli
+```
+
+### Running the demo locally
+```sh
+polymer serve --npm
+open http://127.0.0.1:<port>/demo/
+```
+
+### Running the tests
+```sh
+polymer test --npm
+```
