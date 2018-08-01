@@ -27,12 +27,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     import '@polymer/paper-styles/default-theme.js';
     import '../paper-toolbar.js';
 
-    const $_documentContainer = document.createElement('template');
-
-    $_documentContainer.innerHTML =
-        `<custom-style><style is="custom-style" include="demo-pages-shared-styles"></style></custom-style>`;
-
-    document.body.appendChild($_documentContainer.content);
+    import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+    const template = html
+    `<custom-style><style is="custom-style" include="demo-pages-shared-styles"></style></custom-style>`;
+    document.body.appendChild(template.content);
   </script>
 
   <custom-style>

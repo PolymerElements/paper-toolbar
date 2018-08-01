@@ -94,17 +94,14 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--paper-toolbar-title`      | Mixin applied to the title of the toolbar | `{}`
 `--paper-toolbar-background` | Toolbar background color     | `--primary-color`
-`--paper-toolbar-color`      | Toolbar foreground color     |
-`--dark-theme-text-color`
+`--paper-toolbar-color`      | Toolbar foreground color     | `--dark-theme-text-color`
 `--paper-toolbar-height`     | Custom height for toolbar    | `64px`
 `--paper-toolbar-sm-height`  | Custom height for small screen toolbar | `56px`
 `--paper-toolbar`            | Mixin applied to the toolbar | `{}`
-`--paper-toolbar-content`    | Mixin applied to the content section of the
-toolbar | `{}`
+`--paper-toolbar-content`    | Mixin applied to the content section of the toolbar | `{}`
 `--paper-toolbar-medium`     | Mixin applied to medium height toolbar | `{}`
 `--paper-toolbar-tall`       | Mixin applied to tall height toolbar | `{}`
-`--paper-toolbar-transition` | Transition applied to the `.animate` class |
-`height 0.18s ease-in`
+`--paper-toolbar-transition` | Transition applied to the `.animate` class | `height 0.18s ease-in`
 
 ### Accessibility
 
