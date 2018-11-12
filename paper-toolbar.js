@@ -281,15 +281,15 @@ Polymer({
       }
     </style>
 
-    <div id="topBar" class\$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
+    <div id="topBar" class$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
       <slot name="top"></slot>
     </div>
 
-    <div id="middleBar" class\$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
+    <div id="middleBar" class$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
       <slot name="middle"></slot>
     </div>
 
-    <div id="bottomBar" class\$="toolbar-tools [[_computeBarExtraClasses(bottomJustify)]]">
+    <div id="bottomBar" class$="toolbar-tools [[_computeBarExtraClasses(bottomJustify)]]">
       <slot name="bottom"></slot>
     </div>
 `,
