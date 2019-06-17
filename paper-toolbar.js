@@ -117,6 +117,7 @@ distribuite the content to the top toolbar.
 @demo demo/index.html
 */
 Polymer({
+  /** @override */
   _template: html`
     <style>
       :host {
@@ -320,15 +321,18 @@ Polymer({
 
   },
 
+  /** @override */
   ready: function() {
     console.warn(this.is, 'is deprecated. Please use app-layout instead!');
   },
 
+  /** @override */
   attached: function() {
     this._observer = this._observe(this);
     this._updateAriaLabelledBy();
   },
 
+  /** @override */
   detached: function() {
     if (this._observer) {
       this._observer.disconnect();
